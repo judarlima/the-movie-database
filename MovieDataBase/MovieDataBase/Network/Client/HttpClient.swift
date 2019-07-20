@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ServiceProtocol {
-    func requestData<T: Decodable>(with setup: ServiceSetup, completion: @escaping (Result<T>) -> Void)
+    func requestData<T: Decodable>(with setup: ClientSetup, completion: @escaping (Result<T>) -> Void)
 }
 
 class HttpClient: ServiceProtocol {
@@ -19,7 +19,7 @@ class HttpClient: ServiceProtocol {
         self.urlSession = urlSession
     }
 
-    func requestData<T: Decodable>(with setup: ServiceSetup, completion: @escaping (Result<T>) -> Void) {
+    func requestData<T: Decodable>(with setup: ClientSetup, completion: @escaping (Result<T>) -> Void) {
         guard let url = URL(string: setup.endpoint) else {
             completion(.failure(.urlNotFound))
             return

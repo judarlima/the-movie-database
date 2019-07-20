@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+enum API {
+
+    static let key = "place your key here"
+
+    enum URL {
+        static let base = "https://api.themoviedb.org/3"
+    }
+
+    enum Path {
+        static let upcoming = "/movie/upcoming"
+    }
+}

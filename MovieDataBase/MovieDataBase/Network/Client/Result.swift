@@ -10,5 +10,5 @@ import Foundation
 
 enum Result<T> {
     case success(T)
-    case failure(ServiceError)
+    case failure(ClientError)
 }

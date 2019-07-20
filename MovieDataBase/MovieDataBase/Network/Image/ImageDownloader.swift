@@ -29,7 +29,10 @@ class ImageDownloader: ImageDownloaderProtocol {
             }
         } else {
             urlSession.dataTask(with: url) { [imageCache] (data, _, _) in
-                guard let data = data, let image = UIImage(data: data) else { return }
+                guard
+                    let data = data,
+                    let image = UIImage(data: data)
+                else { return }
                 imageCache.cache(image: image, withKey: url.absoluteString as NSString)
                 DispatchQueue.main.async {
                     completion(image)

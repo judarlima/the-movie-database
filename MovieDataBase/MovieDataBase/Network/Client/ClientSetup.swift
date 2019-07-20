@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol ServiceSetup {
+protocol ClientSetup {
     var endpoint: String { get }
 }
