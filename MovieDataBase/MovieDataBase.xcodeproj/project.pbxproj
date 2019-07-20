@@ -14,6 +14,9 @@
 		E2E7772B22E386BF00161220 /* MovieDataBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7772A22E386BF00161220 /* MovieDataBaseTests.swift */; };
 		E2E7773622E386BF00161220 /* MovieDataBaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7773522E386BF00161220 /* MovieDataBaseUITests.swift */; };
 		E2E7774822E3896900161220 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7774722E3896900161220 /* Result.swift */; };
+		E2E7774B22E392AB00161220 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7774A22E392AB00161220 /* ServiceError.swift */; };
+		E2E7774D22E392E200161220 /* ServiceSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7774C22E392E200161220 /* ServiceSetup.swift */; };
+		E2E7774F22E392FC00161220 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7774E22E392FC00161220 /* APIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		E2E7773522E386BF00161220 /* MovieDataBaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataBaseUITests.swift; sourceTree = "<group>"; };
 		E2E7773722E386BF00161220 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2E7774722E3896900161220 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		E2E7774A22E392AB00161220 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		E2E7774C22E392E200161220 /* ServiceSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSetup.swift; sourceTree = "<group>"; };
+		E2E7774E22E392FC00161220 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +158,10 @@
 		E2E7774622E3894200161220 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				E2E7774E22E392FC00161220 /* APIService.swift */,
 				E2E7774722E3896900161220 /* Result.swift */,
+				E2E7774A22E392AB00161220 /* ServiceError.swift */,
+				E2E7774C22E392E200161220 /* ServiceSetup.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -295,8 +304,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2E7774B22E392AB00161220 /* ServiceError.swift in Sources */,
 				E2E7774822E3896900161220 /* Result.swift in Sources */,
+				E2E7774D22E392E200161220 /* ServiceSetup.swift in Sources */,
 				E2E7771822E386BD00161220 /* ViewController.swift in Sources */,
+				E2E7774F22E392FC00161220 /* APIService.swift in Sources */,
 				E2E7771622E386BD00161220 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

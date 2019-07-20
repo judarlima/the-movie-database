@@ -1,5 +1,5 @@
 //
-//  Result.swift
+//  ServiceSetup.swift
 //  MovieDataBase
 //
 //  Created by Judar Lima on 20/07/19.
@@ -8,7 +8,6 @@
 
 import Foundation
 
-enum Result<T> {
-    case success(T)
-    case failure(ServiceError)
+protocol ServiceSetup {
+    var endpoint: String { get }
 }
