@@ -14,6 +14,14 @@
 		E2E7772B22E386BF00161220 /* MovieDataBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7772A22E386BF00161220 /* MovieDataBaseTests.swift */; };
 		E2E7773622E386BF00161220 /* MovieDataBaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7773522E386BF00161220 /* MovieDataBaseUITests.swift */; };
 		E2E7774822E3896900161220 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7774722E3896900161220 /* Result.swift */; };
+		E2E7774B22E392AB00161220 /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7774A22E392AB00161220 /* ClientError.swift */; };
+		E2E7774D22E392E200161220 /* ClientSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7774C22E392E200161220 /* ClientSetup.swift */; };
+		E2E7774F22E392FC00161220 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7774E22E392FC00161220 /* HttpClient.swift */; };
+		E2E7775122E3957C00161220 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7775022E3957C00161220 /* ImageDownloader.swift */; };
+		E2E7775422E3967400161220 /* APIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7775322E3967400161220 /* APIServiceTests.swift */; };
+		E2E7775822E39CCE00161220 /* ImageCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7775722E39CCE00161220 /* ImageCacher.swift */; };
+		E2E7775C22E39ED500161220 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7775B22E39ED500161220 /* URLSessionProtocol.swift */; };
+		E2E7776422E3AFF000161220 /* API+Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7776322E3AFF000161220 /* API+Constant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +55,14 @@
 		E2E7773522E386BF00161220 /* MovieDataBaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataBaseUITests.swift; sourceTree = "<group>"; };
 		E2E7773722E386BF00161220 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2E7774722E3896900161220 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		E2E7774A22E392AB00161220 /* ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
+		E2E7774C22E392E200161220 /* ClientSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientSetup.swift; sourceTree = "<group>"; };
+		E2E7774E22E392FC00161220 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		E2E7775022E3957C00161220 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		E2E7775322E3967400161220 /* APIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceTests.swift; sourceTree = "<group>"; };
+		E2E7775722E39CCE00161220 /* ImageCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacher.swift; sourceTree = "<group>"; };
+		E2E7775B22E39ED500161220 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
+		E2E7776322E3AFF000161220 /* API+Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Constant.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +113,7 @@
 		E2E7771422E386BD00161220 /* MovieDataBase */ = {
 			isa = PBXGroup;
 			children = (
+				E2E7776122E3AFD700161220 /* Common */,
 				E2E7774622E3894200161220 /* Network */,
 				E2E7774522E3893B00161220 /* Features */,
 				E2E7774422E388FB00161220 /* Resources */,
@@ -108,6 +125,7 @@
 		E2E7772922E386BF00161220 /* MovieDataBaseTests */ = {
 			isa = PBXGroup;
 			children = (
+				E2E7775222E395DA00161220 /* Network */,
 				E2E7772A22E386BF00161220 /* MovieDataBaseTests.swift */,
 				E2E7772C22E386BF00161220 /* Info.plist */,
 			);
@@ -152,7 +170,8 @@
 		E2E7774622E3894200161220 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				E2E7774722E3896900161220 /* Result.swift */,
+				E2E7775E22E3AED900161220 /* Image */,
+				E2E7775D22E3AECD00161220 /* Client */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -163,6 +182,51 @@
 				E2E7771722E386BD00161220 /* ViewController.swift */,
 			);
 			path = UpComingList;
+			sourceTree = "<group>";
+		};
+		E2E7775222E395DA00161220 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E2E7775322E3967400161220 /* APIServiceTests.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E2E7775D22E3AECD00161220 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				E2E7774A22E392AB00161220 /* ClientError.swift */,
+				E2E7774C22E392E200161220 /* ClientSetup.swift */,
+				E2E7774E22E392FC00161220 /* HttpClient.swift */,
+				E2E7774722E3896900161220 /* Result.swift */,
+				E2E7775B22E39ED500161220 /* URLSessionProtocol.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		E2E7775E22E3AED900161220 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				E2E7775722E39CCE00161220 /* ImageCacher.swift */,
+				E2E7775022E3957C00161220 /* ImageDownloader.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		E2E7776122E3AFD700161220 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E2E7776222E3AFDD00161220 /* Constant */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		E2E7776222E3AFDD00161220 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				E2E7776322E3AFF000161220 /* API+Constant.swift */,
+			);
+			path = Constant;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,8 +359,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2E7774B22E392AB00161220 /* ClientError.swift in Sources */,
 				E2E7774822E3896900161220 /* Result.swift in Sources */,
+				E2E7775122E3957C00161220 /* ImageDownloader.swift in Sources */,
+				E2E7774D22E392E200161220 /* ClientSetup.swift in Sources */,
+				E2E7776422E3AFF000161220 /* API+Constant.swift in Sources */,
 				E2E7771822E386BD00161220 /* ViewController.swift in Sources */,
+				E2E7775C22E39ED500161220 /* URLSessionProtocol.swift in Sources */,
+				E2E7775822E39CCE00161220 /* ImageCacher.swift in Sources */,
+				E2E7774F22E392FC00161220 /* HttpClient.swift in Sources */,
 				E2E7771622E386BD00161220 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,6 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2E7775422E3967400161220 /* APIServiceTests.swift in Sources */,
 				E2E7772B22E386BF00161220 /* MovieDataBaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
