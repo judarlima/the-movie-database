@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ServiceError: Error {
+enum ClientError: Error {
     case urlNotFound
     case authenticationRequired
     case brokenData
@@ -30,8 +30,8 @@ enum ServiceError: Error {
     }
 }
 
-extension ServiceError: Equatable {
-    static func ==(lhs: ServiceError, rhs: ServiceError) -> Bool {
+extension ClientError: Equatable {
+    static func ==(lhs: ClientError, rhs: ClientError) -> Bool {
         return lhs.localizedDescription == rhs.localizedDescription
     }
 }
