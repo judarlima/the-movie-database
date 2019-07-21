@@ -1,5 +1,5 @@
 //
-//  UpcomingInteractor.swift
+//  UpcomingMoviesInteractor.swift
 //  MovieDataBase
 //
 //  Created by Judar Lima on 20/07/19.
@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+protocol UpcomingMoviesInteractorProtocol {
+    func listUpcomingMovies()
+}
+
+class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
+    func listUpcomingMovies() {
+        
+    }
+}
