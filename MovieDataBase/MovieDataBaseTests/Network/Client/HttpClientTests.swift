@@ -1,5 +1,5 @@
 //
-//  MovieDataBaseTests.swift
+//  HttpClientTests.swift
 //  MovieDataBaseTests
 //
 //  Created by Judar Lima on 20/07/19.
@@ -7,9 +7,8 @@
 //
 
 import XCTest
-@testable import MovieDataBase
 
-class MovieDataBaseTests: XCTestCase {
+class HttpClientTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
