@@ -7,3 +7,18 @@
 //
 
 import Foundation
+
+struct Upcoming {
+    
+    struct Movie {
+        let title: String
+        let originalTitle: String
+        let posterPath: URL
+        let backdropPath: URL
+        let genreIDS: [Int]
+        let releaseDate: String
+        let overview: String
+    }
+
+    let movies: [Movie]
+}

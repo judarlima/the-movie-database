@@ -1,5 +1,5 @@
 //
-//  UpcomingAdapter.swift
+//  UpcomingMoviesAdapter.swift
 //  MovieDataBase
 //
 //  Created by Judar Lima on 20/07/19.
@@ -12,17 +12,23 @@ protocol UpcomingMoviesAdapterProtocol {
     func transform(from responseModel: UpcomingResponseModel) -> Upcoming
 }
 
-class UpcomingMoviesAdapter: UpcomingAdapterProtocol {
+class UpcomingMoviesAdapter: UpcomingMoviesAdapterProtocol {
     func transform(from responseModel: UpcomingResponseModel) -> Upcoming {
 
-        let movies = responseModel.movies.map {
-            Upcoming.Movie(title: $0.title,
-                           originalTitle: $0.originalTitle,
-                           posterPath: API.URL.base + $0.posterPath,
-                           backdropPath: API.URL.base + $0.backdropPath,
-                           genreIDS: $0.genreIDS,
-                           releaseDate: $0.releaseDate,
-                           overview: $0.overview) }
+        let movies = responseModel.movies.compactMap { movie -> Upcoming.Movie? in
+            guard
+                let posterURL = URL(string: API.URL.image + movie.posterPath),
+                let backdropURL = URL(string: API.URL.image + movie.backdropPath) else
+            { return nil }
+
+            return Upcoming.Movie(title: movie.title,
+                           originalTitle: movie.originalTitle,
+                           posterPath: posterURL,
+                           backdropPath: backdropURL,
+                           genreIDS: movie.genreIDS,
+                           releaseDate: movie.releaseDate,
+                           overview: movie.overview)
+        }
 
         return Upcoming(movies: movies)
     }
