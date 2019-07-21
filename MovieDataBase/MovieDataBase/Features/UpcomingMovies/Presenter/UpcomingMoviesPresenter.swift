@@ -19,21 +19,33 @@ struct MovieViewModel {
 }
 
 protocol UpcomingMoviesPresenterProtocol {
-    func presentMovies(movies: [Upcoming.Movie])
+    func presentMovies(movies: [Upcoming.Movie], genres: [Int: String])
 }
 
 class UpcomingMoviesPresenter: UpcomingMoviesPresenterProtocol {
     weak var viewController: UpcomingMoviesDisplayProtocol?
 
-    func presentMovies(movies: [Upcoming.Movie]) {
-        let moviesViewModel = movies.map { MovieViewModel(title: $0.title,
-                                                          poster: $0.poster.absoluteString,
-                                                          backdrop: $0.backdrop.absoluteString,
-                                                          genre: "Gênero",
-                                                          overview: $0.overview,
-                                                          releaseDate: $0.releaseDate) }
+    func presentMovies(movies: [Upcoming.Movie], genres: [Int: String]) {
+        let moviesViewModel = movies.map { movie -> MovieViewModel in
+
+            let genresString = generateGenreString(genreIDS: movie.genreIDS,
+                                                  genres: genres)
+
+            return MovieViewModel(title: movie.title,
+                                  poster: movie.poster,
+                                  backdrop: movie.backdrop,
+                                  genre: genresString,
+                                  overview: movie.overview,
+                                  releaseDate: movie.releaseDate)
+        }
         DispatchQueue.main.async {
             self.viewController?.displayMovies(viewModel: moviesViewModel)
         }
+    }
+
+    private func generateGenreString(genreIDS: [Int], genres: [Int: String]) -> String {
+        return genreIDS.compactMap { genre -> String? in
+            return genres[genre]
+            }.joined(separator: ", ")
     }
 }

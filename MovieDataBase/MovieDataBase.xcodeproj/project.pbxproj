@@ -33,6 +33,8 @@
 		E2E7778422E4005F00161220 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E7778222E4005F00161220 /* MovieTableViewCell.xib */; };
 		E2E7778722E41F3000161220 /* UpcomingMoviesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7778622E41F3000161220 /* UpcomingMoviesPresenter.swift */; };
 		E2E7778A22E42FF500161220 /* UIImageView+ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7778922E42FF500161220 /* UIImageView+ImageDownloader.swift */; };
+		E2E917E122E4D04100F4784E /* GenresResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E917E022E4D04100F4784E /* GenresResponseModel.swift */; };
+		E2E917E322E4D0F300F4784E /* MovieGenres.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E917E222E4D0F300F4784E /* MovieGenres.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,8 @@
 		E2E7778222E4005F00161220 /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
 		E2E7778622E41F3000161220 /* UpcomingMoviesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesPresenter.swift; sourceTree = "<group>"; };
 		E2E7778922E42FF500161220 /* UIImageView+ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+ImageDownloader.swift"; sourceTree = "<group>"; };
+		E2E917E022E4D04100F4784E /* GenresResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresResponseModel.swift; sourceTree = "<group>"; };
+		E2E917E222E4D0F300F4784E /* MovieGenres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieGenres.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				E2E7776822E3B55300161220 /* UpcomingResponseModel.swift */,
+				E2E917E022E4D04100F4784E /* GenresResponseModel.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -295,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				E2E7777222E3C35300161220 /* Upcoming.swift */,
+				E2E917E222E4D0F300F4784E /* MovieGenres.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -483,6 +489,8 @@
 				E2E7774822E3896900161220 /* Result.swift in Sources */,
 				E2E7776622E3B30800161220 /* UpcomingMoviesGateway.swift in Sources */,
 				E2E7776F22E3BF0500161220 /* UpcomingMoviesAdapter.swift in Sources */,
+				E2E917E322E4D0F300F4784E /* MovieGenres.swift in Sources */,
+				E2E917E122E4D04100F4784E /* GenresResponseModel.swift in Sources */,
 				E2E7776C22E3BAA100161220 /* UpcomingMoviesGatewaySetup.swift in Sources */,
 				E2E7775122E3957C00161220 /* ImageDownloader.swift in Sources */,
 				E2E7776922E3B55300161220 /* UpcomingResponseModel.swift in Sources */,

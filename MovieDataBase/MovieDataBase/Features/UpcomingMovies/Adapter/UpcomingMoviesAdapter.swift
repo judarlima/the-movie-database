@@ -11,16 +11,24 @@ import UIKit
 
 protocol UpcomingMoviesAdapterProtocol {
     func transform(from responseModel: UpcomingResponseModel) -> Upcoming
+    func transform(from responseModel: GenresResponseModel) -> MovieGenres
 }
 
 class UpcomingMoviesAdapter: UpcomingMoviesAdapterProtocol {
 
     func transform(from responseModel: UpcomingResponseModel) -> Upcoming {
         let movies = responseModel.movies.compactMap { movie -> Upcoming.Movie? in
-            guard
-                let posterURL = URL(string: API.URL.image + movie.posterPath),
-                let backdropURL = URL(string: API.URL.image + movie.backdropPath) else
-            { return nil }
+            var poster: String = ""
+            var backdrop: String = ""
+
+            if let posterPath = movie.posterPath {
+                poster = API.URL.image + posterPath
+            }
+
+            if let backdropPath = movie.backdropPath {
+                backdrop = API.URL.image + backdropPath
+            }
+
             let dateFormatterGet = DateFormatter()
             dateFormatterGet.dateFormat = "yyyy-MM-dd"
             guard let date = dateFormatterGet.date(from: movie.releaseDate) else { return nil }
@@ -31,13 +39,18 @@ class UpcomingMoviesAdapter: UpcomingMoviesAdapterProtocol {
 
             return Upcoming.Movie(title: movie.title,
                                   originalTitle: movie.originalTitle,
-                                  poster: posterURL,
-                                  backdrop: backdropURL,
+                                  poster: poster,
+                                  backdrop: backdrop,
                                   genreIDS: movie.genreIDS,
                                   releaseDate: dateString,
                                   overview: movie.overview)
         }
         
-        return Upcoming(movies: movies)
+        return Upcoming(movies: movies, totalPages: responseModel.totalPages)
+    }
+
+    func transform(from responseModel: GenresResponseModel) -> MovieGenres {
+        let genres = responseModel.genres.map { MovieGenres.Genre(id: $0.id, name: $0.name) }
+        return MovieGenres(genres: genres)
     }
 }

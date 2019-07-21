@@ -14,12 +14,13 @@ struct Upcoming {
     struct Movie {
         let title: String
         let originalTitle: String
-        let poster: URL
-        let backdrop: URL
+        let poster: String
+        let backdrop: String
         let genreIDS: [Int]
         let releaseDate: String
         let overview: String
     }
 
     let movies: [Movie]
+    let totalPages: Int
 }

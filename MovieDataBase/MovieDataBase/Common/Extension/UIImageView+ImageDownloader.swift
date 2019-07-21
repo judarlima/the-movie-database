@@ -12,7 +12,7 @@ extension UIImageView {
     func loadImage(url: String) {
         let imageDownloader = ImageDownloader()
         guard let imageUrl = URL(string: url) else { return }
-
+        
         imageDownloader.loadImage(from: imageUrl) { (image) in
             self.image = image
         }

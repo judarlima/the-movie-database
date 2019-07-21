@@ -14,6 +14,7 @@ protocol UpcomingMoviesDisplayProtocol: AnyObject {
 
 class UpcomingMoviesViewController: UIViewController {
     private let cellIdentifier = String(describing: MovieTableViewCell.self)
+    @IBOutlet private weak var loadingView: UIView!
     @IBOutlet private weak var tableView: UITableView!
     private let interactor: UpcomingMoviesInteractorProtocol
     private var movies: [MovieViewModel] = []
@@ -46,6 +47,7 @@ extension UpcomingMoviesViewController: UpcomingMoviesDisplayProtocol {
     func displayMovies(viewModel: [MovieViewModel]) {
         self.movies = viewModel
         tableView.reloadData()
+        loadingView.isHidden = true 
     }
 }
 
@@ -64,6 +66,14 @@ extension UpcomingMoviesViewController: UITableViewDataSource {
             else { return UITableViewCell() }
         let viewModel = movies[indexPath.row]
         cell.bind(viewModel: viewModel)
+
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastMovieAtList = movies.count - 1
+        if indexPath.row == lastMovieAtList  {
+            interactor.nextMoviesPage()
+        }
     }
 }

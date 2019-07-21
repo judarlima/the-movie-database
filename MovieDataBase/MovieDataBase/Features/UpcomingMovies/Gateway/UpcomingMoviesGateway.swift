@@ -10,24 +10,37 @@ import Foundation
 
 protocol UpcomingMoviesGatewayProtocol {
     func fetchUpcomingMovies(page: Int, completion: @escaping (Result<Upcoming>) -> Void)
+    func fetchGenres(completion: @escaping (Result<MovieGenres>) -> Void)
 }
 
 class UpcomingMoviesGateway: UpcomingMoviesGatewayProtocol {
     private let client: ClientProtocol
     private let adapter: UpcomingMoviesAdapterProtocol
-
+    
     init(client: ClientProtocol, adapter: UpcomingMoviesAdapterProtocol) {
         self.client = client
         self.adapter = adapter
     }
-
+    
     func fetchUpcomingMovies(page: Int, completion: @escaping (Result<Upcoming>) -> Void) {
         client.requestData(with: UpcomingMoviesGatewaySetup.upcoming(page: page)) { (result: Result<UpcomingResponseModel>) in
             switch result {
             case let .success(response):
                 let upcoming = self.adapter.transform(from: response)
                 completion(.success(upcoming))
-
+                
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func fetchGenres(completion: @escaping (Result<MovieGenres>) -> Void) {
+        client.requestData(with: UpcomingMoviesGatewaySetup.genre) { (result: Result<GenresResponseModel>) in
+            switch result {
+            case let .success(response):
+                let genres = self.adapter.transform(from: response)
+                completion(.success(genres))
             case let .failure(error):
                 completion(.failure(error))
             }

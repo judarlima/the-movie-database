@@ -10,19 +10,34 @@ import Foundation
 
 enum UpcomingMoviesGatewaySetup: ClientSetup {
     case upcoming(page: Int)
+    case genre
+    case search(movie: String)
 
     var endpoint: String {
         switch self {
         case .upcoming(let page):
-            return buildUrlString(API.URL.base + API.Path.upcoming, key: API.key, page: page)
+            return upcomingQueryString(API.URL.base + API.Path.upcoming, page: page)
+        case .genre:
+            return genreQueryString(API.URL.base + API.Path.genre)
+        default:
+            return ""
         }
     }
 
-    private func buildUrlString(_ url: String, key: String, page: Int) -> String {
+    private func upcomingQueryString(_ url: String, page: Int) -> String {
         var urlComponents = URLComponents(string: url)
         let pageString = String(page)
-        urlComponents?.queryItems = [URLQueryItem(name: "api_key", value: key),
-                                     URLQueryItem(name: "page", value: pageString)]
+        urlComponents?.queryItems = [URLQueryItem(name: "api_key", value: API.key),
+                                     URLQueryItem(name: "page", value: pageString),
+                                     URLQueryItem(name: "language", value: "en-US")]
+        guard let urlString = urlComponents?.url?.absoluteString else { return url }
+        return urlString
+    }
+
+    private func genreQueryString(_ url: String) -> String {
+        var urlComponents = URLComponents(string: url)
+        urlComponents?.queryItems = [URLQueryItem(name: "api_key", value: API.key),
+                                     URLQueryItem(name: "language", value: "en-US")]
         guard let urlString = urlComponents?.url?.absoluteString else { return url }
         return urlString
     }
