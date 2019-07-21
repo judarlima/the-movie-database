@@ -14,6 +14,7 @@ enum API {
 
     enum URL {
         static let base = "https://api.themoviedb.org/3"
+        static let image = "https://image.tmdb.org/t/p/w500"
     }
 
     enum Path {
