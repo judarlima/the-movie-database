@@ -10,7 +10,7 @@ import Foundation
 
 enum API {
 
-    static let key = "place your key here"
+    static let key = "1f54bd990f1cdfb230adb312546d765d"
 
     enum URL {
         static let base = "https://api.themoviedb.org/3"

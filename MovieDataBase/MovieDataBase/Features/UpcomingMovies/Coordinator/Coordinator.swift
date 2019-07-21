@@ -17,7 +17,12 @@ class Coordinator: CoordinatorProtocol {
     let navigationController: UINavigationController
 
     func start() {
-        let viewController = UpcomingMoviesViewController()
+        let gateway = UpcomingMoviesGateway(client: HttpClient(),
+                                            adapter: UpcomingMoviesAdapter())
+        let presenter = UpcomingMoviesPresenter()
+        let interactor = UpcomingMoviesInteractor(gateway: gateway, presenter: presenter)
+        let viewController = UpcomingMoviesViewController(interactor: interactor)
+        presenter.viewController = viewController
         navigationController.pushViewController(viewController, animated: false)
     }
 

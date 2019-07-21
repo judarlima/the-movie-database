@@ -7,14 +7,15 @@
 //
 
 import Foundation
+import UIKit
 
 struct Upcoming {
     
     struct Movie {
         let title: String
         let originalTitle: String
-        let posterPath: URL
-        let backdropPath: URL
+        let poster: URL
+        let backdrop: URL
         let genreIDS: [Int]
         let releaseDate: String
         let overview: String

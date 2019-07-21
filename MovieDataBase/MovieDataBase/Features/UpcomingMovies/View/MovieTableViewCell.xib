@@ -29,18 +29,18 @@
                                     <constraint firstAttribute="height" constant="160" id="zZo-Zt-SI6"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59Y-tn-jue">
-                                <rect key="frame" x="163" y="49.5" width="430" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="WSf-eb-Otz"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A very big title to test how the." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iG-HQ-I30">
+                                <rect key="frame" x="163" y="15" width="430" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A very big title to test how the." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iG-HQ-I30">
-                                <rect key="frame" x="163" y="15" width="430" height="26.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59Y-tn-jue">
+                                <rect key="frame" x="163" y="47" width="430" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="WSf-eb-Otz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -49,7 +49,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="TcV-xh-iau"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -87,6 +87,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="containerView" destination="n0K-By-tng" id="Snh-Es-k24"/>
+                <outlet property="genreLabel" destination="59Y-tn-jue" id="A6J-rk-0zG"/>
+                <outlet property="movieImageView" destination="yhD-w1-AUJ" id="Zks-Cw-P5w"/>
+                <outlet property="releaseLabel" destination="GMA-v0-FXz" id="2Sz-eU-SzR"/>
+                <outlet property="titleLabel" destination="6iG-HQ-I30" id="k0I-Xx-d0a"/>
             </connections>
             <point key="canvasLocation" x="348.55072463768118" y="200.89285714285714"/>
         </tableViewCell>
