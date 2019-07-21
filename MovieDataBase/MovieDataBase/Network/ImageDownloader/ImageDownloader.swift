@@ -14,10 +14,10 @@ protocol ImageDownloaderProtocol {
 }
 
 class ImageDownloader: ImageDownloaderProtocol {
-    private let urlSession: URLSession
+    private let urlSession: URLSessionProtocol
     private let imageCache: ImageCacher
 
-    init(urlSession: URLSession, imageCache: ImageCacher = ImageCacher.shared) {
+    init(urlSession: URLSessionProtocol = URLSession.shared, imageCache: ImageCacher = ImageCacher.shared) {
         self.urlSession = urlSession
         self.imageCache = imageCache
     }

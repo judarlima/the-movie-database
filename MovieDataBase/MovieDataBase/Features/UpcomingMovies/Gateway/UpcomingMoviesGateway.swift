@@ -1,5 +1,5 @@
 //
-//  UpcomingListGateway.swift
+//  UpcomingMoviesGateway.swift
 //  MovieDataBase
 //
 //  Created by Judar Lima on 20/07/19.
@@ -12,7 +12,7 @@ protocol UpcomingMoviesGatewayProtocol {
     func fetchUpcomingMovies(page: Int, completion: @escaping (Result<Upcoming>) -> Void)
 }
 
-class UpcomingGateway: UpcomingMoviesGatewayProtocol {
+class UpcomingMoviesGateway: UpcomingMoviesGatewayProtocol {
     private let client: ClientProtocol
     private let adapter: UpcomingMoviesAdapterProtocol
 
@@ -22,12 +22,10 @@ class UpcomingGateway: UpcomingMoviesGatewayProtocol {
     }
 
     func fetchUpcomingMovies(page: Int, completion: @escaping (Result<Upcoming>) -> Void) {
-        client.requestData(with: UpcomingGatewaySetup.upcoming(page: page)) {
-            [weak self] (result: Result<UpcomingResponseModel>) in
-            guard let gateway = self else { return }
+        client.requestData(with: UpcomingMoviesGatewaySetup.upcoming(page: page)) { (result: Result<UpcomingResponseModel>) in
             switch result {
             case let .success(response):
-                let upcoming = gateway.adapter.transform(from: response)
+                let upcoming = self.adapter.transform(from: response)
                 completion(.success(upcoming))
 
             case let .failure(error):

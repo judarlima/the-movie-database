@@ -1,5 +1,5 @@
 //
-//  UpcomingGatewaySetup.swift
+//  UpcomingMoviesGatewaySetup.swift
 //  MovieDataBase
 //
 //  Created by Judar Lima on 20/07/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum UpcomingGatewaySetup: ClientSetup {
+enum UpcomingMoviesGatewaySetup: ClientSetup {
     case upcoming(page: Int)
 
     var endpoint: String {
