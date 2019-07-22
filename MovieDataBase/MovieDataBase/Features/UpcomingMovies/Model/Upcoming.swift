@@ -12,6 +12,7 @@ import UIKit
 struct Upcoming {
     
     struct Movie {
+        let id: Int
         let title: String
         let originalTitle: String
         let poster: String

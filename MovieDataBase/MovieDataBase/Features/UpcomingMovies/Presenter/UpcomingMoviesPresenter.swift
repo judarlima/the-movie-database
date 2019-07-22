@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 struct MovieViewModel {
+    let id: Int
     let title: String
     let poster: String
     let backdrop: String
@@ -20,6 +21,7 @@ struct MovieViewModel {
 
 protocol UpcomingMoviesPresenterProtocol {
     func presentMovies(movies: [Upcoming.Movie], genres: [Int: String])
+    func presentMovieDetails(movie: Upcoming.Movie, genres: [Int: String])
 }
 
 class UpcomingMoviesPresenter: UpcomingMoviesPresenterProtocol {
@@ -29,17 +31,33 @@ class UpcomingMoviesPresenter: UpcomingMoviesPresenterProtocol {
         let moviesViewModel = movies.map { movie -> MovieViewModel in
 
             let genresString = generateGenreString(genreIDS: movie.genreIDS,
-                                                  genres: genres)
+                                                   genres: genres)
 
-            return MovieViewModel(title: movie.title,
+            return MovieViewModel(id: movie.id,
+                                  title: movie.title,
                                   poster: movie.poster,
                                   backdrop: movie.backdrop,
-                                  genre: genresString,
-                                  overview: movie.overview,
-                                  releaseDate: movie.releaseDate)
+                                  genre: "Genre: \(genresString)",
+                overview: movie.overview,
+                releaseDate: "Release Date: \(movie.releaseDate)")
         }
         DispatchQueue.main.async {
-            self.viewController?.displayMovies(viewModel: moviesViewModel)
+            self.viewController?.displayMovies(viewModels: moviesViewModel)
+        }
+    }
+
+    func presentMovieDetails(movie: Upcoming.Movie, genres: [Int : String]) {
+        let genresString = generateGenreString(genreIDS: movie.genreIDS,
+                                               genres: genres)
+        let viewModel = MovieViewModel(id: movie.id,
+                                       title: movie.title,
+                                       poster: movie.poster,
+                                       backdrop: movie.backdrop,
+                                       genre: genresString,
+                                       overview: movie.overview,
+                                       releaseDate: movie.releaseDate)
+        DispatchQueue.main.async {
+            self.viewController?.showDetails(viewModel: viewModel)
         }
     }
 
