@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UpcomingMoviesViewController" customModule="MovieDataBase" customModuleProvider="target">
             <connections>
                 <outlet property="loadingView" destination="QbT-no-Oou" id="fBh-5p-mg7"/>
+                <outlet property="searchBar" destination="ncy-6e-34W" id="h7A-In-7f0"/>
                 <outlet property="tableView" destination="FkV-2m-TKD" id="OJ7-eo-qsL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,28 +27,19 @@
                     <rect key="frame" x="0.0" y="220" width="414" height="676"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QbT-no-Oou">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                    <subviews>
-                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="beL-tn-k15">
-                            <rect key="frame" x="188.5" y="390.5" width="37" height="37"/>
-                            <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </activityIndicatorView>
-                    </subviews>
-                    <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstItem="beL-tn-k15" firstAttribute="centerY" secondItem="QbT-no-Oou" secondAttribute="centerY" id="OH3-TF-fsv"/>
-                        <constraint firstItem="beL-tn-k15" firstAttribute="centerX" secondItem="QbT-no-Oou" secondAttribute="centerX" id="dPB-dW-UBc"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tkc-0Y-AIE">
                     <rect key="frame" x="0.0" y="44" width="414" height="176"/>
                     <subviews>
-                        <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Buscar Filme" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ncy-6e-34W">
+                        <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search Movies" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ncy-6e-34W">
                             <rect key="frame" x="0.0" y="110" width="414" height="56"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="searchField.textColor">
+                                    <color key="value" red="0.3736300468" green="0.81163698429999998" blue="0.50191193820000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                         </searchBar>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Movie DB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2V-hq-wUQ">
                             <rect key="frame" x="10" y="40" width="394" height="50"/>
@@ -69,6 +61,20 @@
                         <constraint firstItem="W2V-hq-wUQ" firstAttribute="centerX" secondItem="Tkc-0Y-AIE" secondAttribute="centerX" id="dP3-Vj-6GM"/>
                         <constraint firstAttribute="bottom" secondItem="ncy-6e-34W" secondAttribute="bottom" constant="10" id="dnq-aM-Xiy"/>
                         <constraint firstItem="W2V-hq-wUQ" firstAttribute="top" secondItem="Tkc-0Y-AIE" secondAttribute="top" constant="40" id="xm5-mX-9Y9"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QbT-no-Oou">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="beL-tn-k15">
+                            <rect key="frame" x="188.5" y="390.5" width="37" height="37"/>
+                            <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="beL-tn-k15" firstAttribute="centerY" secondItem="QbT-no-Oou" secondAttribute="centerY" id="OH3-TF-fsv"/>
+                        <constraint firstItem="beL-tn-k15" firstAttribute="centerX" secondItem="QbT-no-Oou" secondAttribute="centerX" id="dPB-dW-UBc"/>
                     </constraints>
                 </view>
             </subviews>
