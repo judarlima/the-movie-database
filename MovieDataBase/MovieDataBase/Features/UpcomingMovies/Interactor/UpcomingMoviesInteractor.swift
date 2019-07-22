@@ -12,26 +12,17 @@ protocol UpcomingMoviesInteractorProtocol {
     func listUpcomingMovies()
     func nextMoviesPage()
     func seeDetails(viewModel: MovieViewModel)
-    func moviesGenres()
-    func searchMovies(text: String)
+    func searchMovies(query: String)
     func cancelSearch()
 }
 
 class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
-    private lazy var queue: OperationQueue = {
-        let operation = OperationQueue()
-        operation.maxConcurrentOperationCount = 1
-        operation.qualityOfService = .userInteractive
-        return operation
-    }()
-
     private let gateway: UpcomingMoviesGatewayProtocol
     private let presenter: UpcomingMoviesPresenterProtocol
 
     private var cache: [Upcoming.Movie] = []
     private var totalPages = 0
     private var currentPage = 1
-    private var genres: [Int: String] = [:]
     private var isFiltered = false
     private var searchText = ""
 
@@ -41,35 +32,30 @@ class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
     }
 
     func listUpcomingMovies() {
-        if genres.isEmpty { self.moviesGenres() }
-        queue.addOperation {
-            self.gateway.fetchUpcomingMovies(page: self.currentPage) { (result) in
-                switch result {
-                case let .success(upcoming):
-                    self.isFiltered = false
-                    self.totalPages = upcoming.totalPages
-                    self.cache = upcoming.movies
-                    self.presenter.presentMovies(movies: upcoming.movies, genres: self.genres)
-                case .failure(_): break
-                }
+        self.gateway.fetchUpcomingMovies(page: self.currentPage) { (result) in
+            switch result {
+            case let .success(upcoming):
+                self.isFiltered = false
+                self.totalPages = upcoming.totalPages
+                self.cache = upcoming.movies
+                self.presenter.presentMovies(movies: upcoming.movies)
+            case .failure(_): break
             }
         }
     }
 
-    func searchMovies(text: String) {
-        queue.addOperation {
-            guard text != "" else { self.listUpcomingMovies(); return }
-            self.searchText = text
-            self.gateway.fetchFiltered(page: 1, text: text) { (result) in
-                switch result {
-                case let .success(filteredMovies):
-                    self.isFiltered = true
-                    self.cache.removeAll()
-                    self.cache = filteredMovies.movies
-                    self.totalPages = filteredMovies.totalPages
-                    self.presenter.presentMovies(movies: filteredMovies.movies, genres: self.genres)
-                case .failure(_): return
-                }
+    func searchMovies(query: String) {
+        guard query != "" else { self.listUpcomingMovies(); return }
+        self.searchText = query
+        self.gateway.fetchFiltered(page: 1, query: query) { (result) in
+            switch result {
+            case let .success(filteredMovies):
+                self.isFiltered = true
+                self.cache.removeAll()
+                self.cache = filteredMovies.movies
+                self.totalPages = filteredMovies.totalPages
+                self.presenter.presentMovies(movies: filteredMovies.movies)
+            case .failure(_): return
             }
         }
     }
@@ -77,22 +63,22 @@ class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
     func nextMoviesPage() {
         if currentPage < totalPages {
             currentPage += 1
-            queue.addOperation {
-                if self.isFiltered {
-                    self.nextFilteredPage()
-                } else {
-                    self.nextUpcoming()
-                }
+            if self.isFiltered {
+                self.nextFilteredPage()
+            } else {
+                self.nextUpcoming()
             }
+        } else {
+            presenter.presentEndList()
         }
     }
 
     private func nextFilteredPage() {
-        self.gateway.fetchFiltered(page: self.currentPage, text: self.searchText) { (result) in
+        self.gateway.fetchFiltered(page: self.currentPage, query: self.searchText) { (result) in
             switch result {
             case let .success(filteredMovies):
                 self.cache.append(contentsOf: filteredMovies.movies)
-                self.presenter.presentMovies(movies: filteredMovies.movies, genres: self.genres)
+                self.presenter.presentMovies(movies: filteredMovies.movies)
             case .failure(_): return
             }
         }
@@ -103,7 +89,7 @@ class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
             switch result {
             case let .success(upcoming):
                 self.cache.append(contentsOf: upcoming.movies)
-                self.presenter.presentMovies(movies: self.cache, genres: self.genres)
+                self.presenter.presentMovies(movies: self.cache)
             case .failure(_):
                 return
             }
@@ -117,20 +103,8 @@ class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
         listUpcomingMovies()
     }
 
-    func moviesGenres() {
-        queue.addOperation {
-            self.gateway.fetchGenres { (result) in
-                switch result {
-                case let .success(movieGenres):
-                    movieGenres.genres.forEach { self.genres[$0.id] = $0.name }
-                case .failure(_): return
-                }
-            }
-        }
-    }
-
     func seeDetails(viewModel: MovieViewModel) {
         guard let selectedMovie = (cache.first { $0.id == viewModel.id }) else { return }
-        presenter.presentMovieDetails(movie: selectedMovie, genres: self.genres)
+        presenter.presentMovieDetails(movie: selectedMovie)
     }
 }

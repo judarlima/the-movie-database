@@ -14,6 +14,7 @@ struct ErrorViewModel {
 }
 
 protocol UpcomingMoviesPresenterProtocol {
+    func presentEndList()
     func presentMovies(movies: [Upcoming.Movie])
     func presentMovieDetails(movie: Upcoming.Movie)
     func presentError(error: String)
@@ -61,6 +62,12 @@ class UpcomingMoviesPresenter: UpcomingMoviesPresenterProtocol {
         let errorViewModel = ErrorViewModel(alert: alertView)
         DispatchQueue.main.async {
             self.viewController?.showError(viewModel: errorViewModel)
+        }
+    }
+
+    func presentEndList() {
+        DispatchQueue.main.async {
+            self.viewController?.displayEndList()
         }
     }
 }
