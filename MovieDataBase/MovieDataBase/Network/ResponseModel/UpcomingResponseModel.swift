@@ -11,7 +11,8 @@ import Foundation
 struct UpcomingResponseModel: Decodable {
 
     struct Movie: Decodable {
-        let voteCount, id: Int
+        let voteCount: Int
+        let id: Int
         let video: Bool
         let voteAverage: Double
         let title: String
@@ -45,14 +46,14 @@ struct UpcomingResponseModel: Decodable {
     }
 
     let movies: [Movie]
-    let page, totalResults: Int
-    let dates: Dates
+    let page: Int
+    let totalResults: Int
     let totalPages: Int
 
     enum CodingKeys: String, CodingKey {
         case movies = "results"
         case totalResults = "total_results"
-        case dates, page
+        case page
         case totalPages = "total_pages"
     }
 }

@@ -37,7 +37,8 @@ class UpcomingMoviesAdapter: UpcomingMoviesAdapterProtocol {
             dateFormatterPrint.dateFormat = "d MMM, yyyy"
             let dateString = dateFormatterPrint.string(from: date)
 
-            return Upcoming.Movie(title: movie.title,
+            return Upcoming.Movie(id: movie.id,
+                                  title: movie.title,
                                   originalTitle: movie.originalTitle,
                                   poster: poster,
                                   backdrop: backdrop,
