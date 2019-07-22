@@ -1,5 +1,5 @@
 //
-//  ServiceError.swift
+//  ClientError.swift
 //  MovieDataBase
 //
 //  Created by Judar Lima on 20/07/19.
@@ -15,6 +15,7 @@ enum ClientError: Error {
     case couldNotFindHost
     case couldNotParseObject
     case badRequest
+    case invalidHttpResponse
     case unknown(String)
 
     var localizedDescription: String {
@@ -25,6 +26,7 @@ enum ClientError: Error {
         case .couldNotFindHost: return "The host was not found."
         case .badRequest: return "This is a bad request."
         case .couldNotParseObject: return "Can't convert the data to the object entity."
+        case .invalidHttpResponse: return "HTTPURLResponse is nil"
         case let .unknown(message): return message
         }
     }

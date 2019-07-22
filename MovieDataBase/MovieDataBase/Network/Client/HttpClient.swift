@@ -1,5 +1,5 @@
 //
-//  APIService.swift
+//  HttpClient.swift
 //  MovieDataBase
 //
 //  Created by Judar Lima on 20/07/19.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol ServiceProtocol {
+protocol ClientProtocol {
     func requestData<T: Decodable>(with setup: ClientSetup, completion: @escaping (Result<T>) -> Void)
 }
 
-class HttpClient: ServiceProtocol {
+class HttpClient: ClientProtocol {
     private let urlSession: URLSessionProtocol
 
     init(urlSession: URLSessionProtocol = URLSession.shared) {
@@ -29,6 +29,7 @@ class HttpClient: ServiceProtocol {
             client.urlSession.dataTask(with: url) { (data, response, error) in
                 if let error = error {
                     completion(.failure(.unknown(error.localizedDescription)))
+                    return
                 }
 
                 guard let data = data else {
@@ -37,11 +38,12 @@ class HttpClient: ServiceProtocol {
                 }
 
                 guard let httpResponse = response as? HTTPURLResponse else {
-                    completion(.failure(.unknown("Could not cast to HTTPURLResponse object.")))
+                    completion(.failure(.invalidHttpResponse))
                     return
                 }
                 completion(client.convertResponse(httpResponse, data: data))
-                }.resume()
+                return
+            }.resume()
         }
     }
 

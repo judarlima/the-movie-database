@@ -1,5 +1,5 @@
 //
-//  URLSession.swift
+//  URLSessionProtocol.swift
 //  MovieDataBase
 //
 //  Created by Judar Lima on 20/07/19.
@@ -9,9 +9,7 @@
 import Foundation
 
 protocol URLSessionProtocol {
-    typealias DataTaskResult = (Data?, URLResponse?, Error?) -> Void
-
-    func dataTask(with request: URL, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol
+    func dataTask(with request: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol
 }
 
 protocol URLSessionDataTaskProtocol {
@@ -19,7 +17,7 @@ protocol URLSessionDataTaskProtocol {
 }
 
 extension URLSession: URLSessionProtocol {
-    func dataTask(with request: URL, completionHandler: @escaping URLSessionProtocol.DataTaskResult) -> URLSessionDataTaskProtocol {
+    func dataTask(with request: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
         return dataTask(with: request, completionHandler: completionHandler) as URLSessionDataTask
     }
 }

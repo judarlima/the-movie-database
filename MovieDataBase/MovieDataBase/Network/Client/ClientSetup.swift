@@ -1,5 +1,5 @@
 //
-//  ServiceSetup.swift
+//  ClientSetup.swift
 //  MovieDataBase
 //
 //  Created by Judar Lima on 20/07/19.
