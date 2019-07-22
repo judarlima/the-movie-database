@@ -35,6 +35,8 @@
 		E2E7778A22E42FF500161220 /* UIImageView+ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7778922E42FF500161220 /* UIImageView+ImageDownloader.swift */; };
 		E2E917E122E4D04100F4784E /* GenresResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E917E022E4D04100F4784E /* GenresResponseModel.swift */; };
 		E2E917E322E4D0F300F4784E /* MovieGenres.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E917E222E4D0F300F4784E /* MovieGenres.swift */; };
+		E2E917E622E4ED5100F4784E /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E917E422E4ED5100F4784E /* MovieViewController.swift */; };
+		E2E917E722E4ED5100F4784E /* MovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E917E522E4ED5100F4784E /* MovieViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +91,8 @@
 		E2E7778922E42FF500161220 /* UIImageView+ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+ImageDownloader.swift"; sourceTree = "<group>"; };
 		E2E917E022E4D04100F4784E /* GenresResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresResponseModel.swift; sourceTree = "<group>"; };
 		E2E917E222E4D0F300F4784E /* MovieGenres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieGenres.swift; sourceTree = "<group>"; };
+		E2E917E422E4ED5100F4784E /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
+		E2E917E522E4ED5100F4784E /* MovieViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +191,7 @@
 		E2E7774522E3893B00161220 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				E2E917E822E4F91400F4784E /* MovieDetail */,
 				E2E7774922E3896F00161220 /* UpcomingMovies */,
 			);
 			path = Features;
@@ -348,6 +353,15 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		E2E917E822E4F91400F4784E /* MovieDetail */ = {
+			isa = PBXGroup;
+			children = (
+				E2E917E422E4ED5100F4784E /* MovieViewController.swift */,
+				E2E917E522E4ED5100F4784E /* MovieViewController.xib */,
+			);
+			path = MovieDetail;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -456,6 +470,7 @@
 				E2E7778022E3FF4900161220 /* UpcomingMoviesViewController.xib in Resources */,
 				E2E7772022E386BF00161220 /* LaunchScreen.storyboard in Resources */,
 				E2E7778422E4005F00161220 /* MovieTableViewCell.xib in Resources */,
+				E2E917E722E4ED5100F4784E /* MovieViewController.xib in Resources */,
 				E2E7771D22E386BF00161220 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,6 +518,7 @@
 				E2E7774F22E392FC00161220 /* HttpClient.swift in Sources */,
 				E2E7771622E386BD00161220 /* AppDelegate.swift in Sources */,
 				E2E7778A22E42FF500161220 /* UIImageView+ImageDownloader.swift in Sources */,
+				E2E917E622E4ED5100F4784E /* MovieViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

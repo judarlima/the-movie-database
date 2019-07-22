@@ -20,5 +20,6 @@ enum API {
     enum Path {
         static let upcoming = "/movie/upcoming"
         static let genre = "/genre/movie/list"
+        static let search = "/search/movie"
     }
 }
