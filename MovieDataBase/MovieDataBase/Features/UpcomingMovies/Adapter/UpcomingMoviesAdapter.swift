@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 
 protocol UpcomingMoviesAdapterProtocol {
-    func transform(from responseModel: UpcomingResponseModel) -> Upcoming
+    func transform(from responseModel: UpcomingResponseModel, genres: [Int: String]) -> Upcoming
     func transform(from responseModel: GenresResponseModel) -> MovieGenres
 }
 
 class UpcomingMoviesAdapter: UpcomingMoviesAdapterProtocol {
 
-    func transform(from responseModel: UpcomingResponseModel) -> Upcoming {
+    func transform(from responseModel: UpcomingResponseModel, genres: [Int: String]) -> Upcoming {
         let movies = responseModel.movies.compactMap { movie -> Upcoming.Movie? in
             var poster: String = ""
             var backdrop: String = ""
@@ -37,17 +37,25 @@ class UpcomingMoviesAdapter: UpcomingMoviesAdapterProtocol {
             dateFormatterPrint.dateFormat = "d MMM, yyyy"
             let dateString = dateFormatterPrint.string(from: date)
 
+            let genresString = generateGenreString(genreIDS: movie.genreIDS, genres: genres)
+
             return Upcoming.Movie(id: movie.id,
                                   title: movie.title,
                                   originalTitle: movie.originalTitle,
                                   poster: poster,
                                   backdrop: backdrop,
-                                  genreIDS: movie.genreIDS,
+                                  genres: genresString,
                                   releaseDate: dateString,
                                   overview: movie.overview)
         }
         
         return Upcoming(movies: movies, totalPages: responseModel.totalPages)
+    }
+
+    private func generateGenreString(genreIDS: [Int], genres: [Int: String]) -> String {
+        return genreIDS.compactMap { genre -> String? in
+            return genres[genre]
+            }.joined(separator: ", ")
     }
 
     func transform(from responseModel: GenresResponseModel) -> MovieGenres {

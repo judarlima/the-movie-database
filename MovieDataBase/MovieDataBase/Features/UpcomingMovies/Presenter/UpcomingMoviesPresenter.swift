@@ -9,35 +9,27 @@
 import Foundation
 import UIKit
 
-struct MovieViewModel {
-    let id: Int
-    let title: String
-    let poster: String
-    let backdrop: String
-    let genre: String
-    let overview: String
-    let releaseDate: String
+struct ErrorViewModel {
+    let alert: UIAlertController
 }
 
 protocol UpcomingMoviesPresenterProtocol {
-    func presentMovies(movies: [Upcoming.Movie], genres: [Int: String])
-    func presentMovieDetails(movie: Upcoming.Movie, genres: [Int: String])
+    func presentMovies(movies: [Upcoming.Movie])
+    func presentMovieDetails(movie: Upcoming.Movie)
+    func presentError(error: String)
 }
 
 class UpcomingMoviesPresenter: UpcomingMoviesPresenterProtocol {
     weak var viewController: UpcomingMoviesDisplayProtocol?
 
-    func presentMovies(movies: [Upcoming.Movie], genres: [Int: String]) {
+    func presentMovies(movies: [Upcoming.Movie]) {
         let moviesViewModel = movies.map { movie -> MovieViewModel in
-
-            let genresString = generateGenreString(genreIDS: movie.genreIDS,
-                                                   genres: genres)
 
             return MovieViewModel(id: movie.id,
                                   title: movie.title,
                                   poster: movie.poster,
                                   backdrop: movie.backdrop,
-                                  genre: "Genre: \(genresString)",
+                                  genre: "Genre: \(movie.genres)",
                 overview: movie.overview,
                 releaseDate: "Release Date: \(movie.releaseDate)")
         }
@@ -46,14 +38,12 @@ class UpcomingMoviesPresenter: UpcomingMoviesPresenterProtocol {
         }
     }
 
-    func presentMovieDetails(movie: Upcoming.Movie, genres: [Int : String]) {
-        let genresString = generateGenreString(genreIDS: movie.genreIDS,
-                                               genres: genres)
+    func presentMovieDetails(movie: Upcoming.Movie) {
         let viewModel = MovieViewModel(id: movie.id,
                                        title: movie.title,
                                        poster: movie.poster,
                                        backdrop: movie.backdrop,
-                                       genre: genresString,
+                                       genre: movie.genres,
                                        overview: movie.overview,
                                        releaseDate: movie.releaseDate)
         DispatchQueue.main.async {
@@ -61,9 +51,16 @@ class UpcomingMoviesPresenter: UpcomingMoviesPresenterProtocol {
         }
     }
 
-    private func generateGenreString(genreIDS: [Int], genres: [Int: String]) -> String {
-        return genreIDS.compactMap { genre -> String? in
-            return genres[genre]
-            }.joined(separator: ", ")
+    func presentError(error: String) {
+        let alertView = UIAlertController(title: "Houston, We Have a Problem.",
+                                          message: error, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Try Again", style: .default) { (_) in
+            self.viewController?.tryAgain()
+        }
+        alertView.addAction(action)
+        let errorViewModel = ErrorViewModel(alert: alertView)
+        DispatchQueue.main.async {
+            self.viewController?.showError(viewModel: errorViewModel)
+        }
     }
 }

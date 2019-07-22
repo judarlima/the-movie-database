@@ -11,6 +11,8 @@ import UIKit
 protocol UpcomingMoviesDisplayProtocol: AnyObject {
     func displayMovies(viewModels: [MovieViewModel])
     func showDetails(viewModel: MovieViewModel)
+    func showError(viewModel: ErrorViewModel)
+    func tryAgain()
 }
 
 class UpcomingMoviesViewController: UIViewController {
@@ -18,6 +20,11 @@ class UpcomingMoviesViewController: UIViewController {
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var loadingView: UIView!
     @IBOutlet private weak var tableView: UITableView!
+    private let footerView: UpcomingMoviesFooterView = {
+        let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100)
+        let footerView = UpcomingMoviesFooterView(frame: frame)
+        return footerView
+    }()
     private let interactor: UpcomingMoviesInteractorProtocol
     private let coordinator: UpcomingCoordinatorProtocol
     private var movies: [MovieViewModel] = []
@@ -36,20 +43,32 @@ class UpcomingMoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        interactor.listUpcomingMovies()
+        interactor.listUpcomingMovies(query: "")
     }
 
     private func setup() {
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableFooterView = self.footerView
         tableView.register(UINib(nibName: cellIdentifier, bundle: Bundle.main),
                            forCellReuseIdentifier: cellIdentifier)
     }
 }
 
 extension UpcomingMoviesViewController: UpcomingMoviesDisplayProtocol {
+
+    func showError(viewModel: ErrorViewModel) {
+        loadingView.isHidden = true
+        present(viewModel.alert, animated: true, completion: nil)
+    }
+
+    func tryAgain() {
+        print("aqui")
+    }
+
     func displayMovies(viewModels: [MovieViewModel]) {
+        self.footerView.hide()
         self.movies = viewModels
         tableView.reloadData()
         loadingView.isHidden = true 
@@ -85,6 +104,7 @@ extension UpcomingMoviesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let lastMovieAtList = movies.count - 1
         if indexPath.row == lastMovieAtList  {
+            self.footerView.show()
             interactor.nextMoviesPage()
         }
     }
@@ -104,6 +124,7 @@ extension UpcomingMoviesViewController: UISearchBarDelegate {
         self.searchBar.resignFirstResponder()
         guard let textToSearch = searchBar.text else { return }
         let trimmedString = textToSearch.trimmingCharacters(in: .whitespacesAndNewlines)
-        interactor.searchMovies(text: trimmedString)
+        interactor.listUpcomingMovies(query: trimmedString)
+//        interactor.searchMovies(text: trimmedString)
     }
 }

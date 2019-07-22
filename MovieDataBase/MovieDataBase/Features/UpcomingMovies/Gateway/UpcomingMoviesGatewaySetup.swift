@@ -54,6 +54,7 @@ enum UpcomingMoviesGatewaySetup: ClientSetup {
                                      URLQueryItem(name: "api_key", value: API.key),
                                      URLQueryItem(name: "page", value: pageString),
                                      URLQueryItem(name: "include_adult", value: "false")]
+
         guard let urlString = urlComponents?.url?.absoluteString else { return url }
         return urlString
     }
