@@ -13,16 +13,17 @@ protocol UpcomingMoviesDisplayProtocol: AnyObject {
     func showDetails(viewModel: MovieViewModel)
     func showError(viewModel: ErrorViewModel)
     func tryAgain()
+    func displayEndList()
 }
 
 class UpcomingMoviesViewController: UIViewController {
     private let cellIdentifier = String(describing: MovieTableViewCell.self)
     @IBOutlet private weak var searchBar: UISearchBar!
-    @IBOutlet private weak var loadingView: UIView!
+    @IBOutlet weak var loadingView: LoadingView!
     @IBOutlet private weak var tableView: UITableView!
-    private let footerView: UpcomingMoviesFooterView = {
+    private let footerView: LoadingView = {
         let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100)
-        let footerView = UpcomingMoviesFooterView(frame: frame)
+        let footerView = LoadingView(frame: frame)
         return footerView
     }()
     private let interactor: UpcomingMoviesInteractorProtocol
@@ -43,7 +44,8 @@ class UpcomingMoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        interactor.listUpcomingMovies(query: "")
+        loadingView.show()
+        interactor.listUpcomingMovies()
     }
 
     private func setup() {
@@ -59,7 +61,7 @@ class UpcomingMoviesViewController: UIViewController {
 extension UpcomingMoviesViewController: UpcomingMoviesDisplayProtocol {
 
     func showError(viewModel: ErrorViewModel) {
-        loadingView.isHidden = true
+        loadingView.hide()
         present(viewModel.alert, animated: true, completion: nil)
     }
 
@@ -67,11 +69,15 @@ extension UpcomingMoviesViewController: UpcomingMoviesDisplayProtocol {
         print("aqui")
     }
 
+    func displayEndList() {
+        footerView.hide()
+    }
+
     func displayMovies(viewModels: [MovieViewModel]) {
         self.footerView.hide()
         self.movies = viewModels
         tableView.reloadData()
-        loadingView.isHidden = true 
+        loadingView.hide()
     }
 
     func showDetails(viewModel: MovieViewModel) {
@@ -124,7 +130,6 @@ extension UpcomingMoviesViewController: UISearchBarDelegate {
         self.searchBar.resignFirstResponder()
         guard let textToSearch = searchBar.text else { return }
         let trimmedString = textToSearch.trimmingCharacters(in: .whitespacesAndNewlines)
-        interactor.listUpcomingMovies(query: trimmedString)
-//        interactor.searchMovies(text: trimmedString)
+        interactor.searchMovies(query: trimmedString)
     }
 }

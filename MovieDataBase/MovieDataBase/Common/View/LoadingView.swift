@@ -1,5 +1,5 @@
 //
-//  LoadingFooterView.swift
+//  LoadingView.swift
 //  MovieDataBase
 //
 //  Created by Judar Lima on 22/07/19.
@@ -24,7 +24,7 @@ class LoadingView: UIView {
     }
 
     private func commonInit() {
-        Bundle.main.loadNibNamed("UpcomingMoviesFooterView", owner: self, options: nil)
+        Bundle.main.loadNibNamed("LoadingView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
@@ -32,13 +32,13 @@ class LoadingView: UIView {
 
     public func hide() {
         self.alpha = 0
-        self.frame.size.height = 0
+        self.isHidden = true
         self.loader.stopAnimating()
     }
 
     public func show() {
         self.alpha = 1
-        self.frame.size.height = 100
+        self.isHidden = false
         self.loader.startAnimating()
     }
 }
