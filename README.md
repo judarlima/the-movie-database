@@ -63,8 +63,8 @@
 <a name="instructions"></a>
 ## Instructions
 ```bash
-$ git clone https://github.com/judarlima/theMoviesDB.git
-$ cd theMoviesDB/
+$ git clone https://github.com/judarlima/the-movie-database.git
+$ cd the-movie-database
 $ git checkout development
 $ cd MovieDataBase/
 $ open MovieDataBase.xcodeproj
