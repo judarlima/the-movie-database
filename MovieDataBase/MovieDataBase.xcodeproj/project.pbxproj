@@ -15,8 +15,10 @@
 		E23C051E22E6BFA40054FEC7 /* upcoming.json in Resources */ = {isa = PBXBuildFile; fileRef = E23C051D22E6BFA40054FEC7 /* upcoming.json */; };
 		E23C051F22E6C5430054FEC7 /* upcoming.json in Resources */ = {isa = PBXBuildFile; fileRef = E23C051D22E6BFA40054FEC7 /* upcoming.json */; };
 		E23C052222E6C8BE0054FEC7 /* UpcomingMoviesAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C052122E6C8BE0054FEC7 /* UpcomingMoviesAdapterTests.swift */; };
+		E23C052422E72DB50054FEC7 /* HttpClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C052322E72DB50054FEC7 /* HttpClientMock.swift */; };
+		E23C052722E747BB0054FEC7 /* UpcomingMoviesGatewaySetupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23C052622E747BB0054FEC7 /* UpcomingMoviesGatewaySetupTests.swift */; };
 		E2CF273922E68660007E62A2 /* UpcomingMoviesInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF273822E68660007E62A2 /* UpcomingMoviesInteractorTests.swift */; };
-		E2CF273B22E687B8007E62A2 /* HttpClientMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF273A22E687B8007E62A2 /* HttpClientMocks.swift */; };
+		E2CF273B22E687B8007E62A2 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF273A22E687B8007E62A2 /* URLSessionMock.swift */; };
 		E2CF273F22E6A314007E62A2 /* UpcomingMoviesPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF273E22E6A314007E62A2 /* UpcomingMoviesPresenterTests.swift */; };
 		E2CF274122E6A5DD007E62A2 /* UpcomingMoviesGatewayMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF274022E6A5DD007E62A2 /* UpcomingMoviesGatewayMock.swift */; };
 		E2CF274322E6A61D007E62A2 /* UpcomingMoviesPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF274222E6A61D007E62A2 /* UpcomingMoviesPresenterMock.swift */; };
@@ -70,8 +72,10 @@
 		E23C051B22E6B5AC0054FEC7 /* UpcomingMoviesGatewayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesGatewayTests.swift; sourceTree = "<group>"; };
 		E23C051D22E6BFA40054FEC7 /* upcoming.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = upcoming.json; sourceTree = "<group>"; };
 		E23C052122E6C8BE0054FEC7 /* UpcomingMoviesAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesAdapterTests.swift; sourceTree = "<group>"; };
+		E23C052322E72DB50054FEC7 /* HttpClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientMock.swift; sourceTree = "<group>"; };
+		E23C052622E747BB0054FEC7 /* UpcomingMoviesGatewaySetupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesGatewaySetupTests.swift; sourceTree = "<group>"; };
 		E2CF273822E68660007E62A2 /* UpcomingMoviesInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesInteractorTests.swift; sourceTree = "<group>"; };
-		E2CF273A22E687B8007E62A2 /* HttpClientMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientMocks.swift; sourceTree = "<group>"; };
+		E2CF273A22E687B8007E62A2 /* URLSessionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
 		E2CF273E22E6A314007E62A2 /* UpcomingMoviesPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesPresenterTests.swift; sourceTree = "<group>"; };
 		E2CF274022E6A5DD007E62A2 /* UpcomingMoviesGatewayMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesGatewayMock.swift; sourceTree = "<group>"; };
 		E2CF274222E6A61D007E62A2 /* UpcomingMoviesPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMoviesPresenterMock.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				E23C051B22E6B5AC0054FEC7 /* UpcomingMoviesGatewayTests.swift */,
+				E23C052622E747BB0054FEC7 /* UpcomingMoviesGatewaySetupTests.swift */,
 			);
 			path = Gateway;
 			sourceTree = "<group>";
@@ -179,6 +184,14 @@
 				E23C052122E6C8BE0054FEC7 /* UpcomingMoviesAdapterTests.swift */,
 			);
 			path = Adapter;
+			sourceTree = "<group>";
+		};
+		E23C052522E72E2B0054FEC7 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				E23C051D22E6BFA40054FEC7 /* upcoming.json */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		E2CF273622E685FE007E62A2 /* Features */ = {
@@ -200,11 +213,12 @@
 		E2CF273C22E687FB007E62A2 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				E2CF273A22E687B8007E62A2 /* HttpClientMocks.swift */,
+				E23C052522E72E2B0054FEC7 /* Resource */,
+				E23C052322E72DB50054FEC7 /* HttpClientMock.swift */,
 				E2CF274022E6A5DD007E62A2 /* UpcomingMoviesGatewayMock.swift */,
 				E2CF274222E6A61D007E62A2 /* UpcomingMoviesPresenterMock.swift */,
 				E2CF274422E6A67D007E62A2 /* UpcomingMoviesViewControllerMock.swift */,
-				E23C051D22E6BFA40054FEC7 /* upcoming.json */,
+				E2CF273A22E687B8007E62A2 /* URLSessionMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -595,11 +609,13 @@
 				E23C051922E6B3590054FEC7 /* CoordinatorTests.swift in Sources */,
 				E23C051C22E6B5AC0054FEC7 /* UpcomingMoviesGatewayTests.swift in Sources */,
 				E2E7777922E3D15D00161220 /* HttpClientTests.swift in Sources */,
+				E23C052722E747BB0054FEC7 /* UpcomingMoviesGatewaySetupTests.swift in Sources */,
 				E2CF273F22E6A314007E62A2 /* UpcomingMoviesPresenterTests.swift in Sources */,
 				E23C052222E6C8BE0054FEC7 /* UpcomingMoviesAdapterTests.swift in Sources */,
 				E2CF273922E68660007E62A2 /* UpcomingMoviesInteractorTests.swift in Sources */,
 				E2CF274322E6A61D007E62A2 /* UpcomingMoviesPresenterMock.swift in Sources */,
-				E2CF273B22E687B8007E62A2 /* HttpClientMocks.swift in Sources */,
+				E23C052422E72DB50054FEC7 /* HttpClientMock.swift in Sources */,
+				E2CF273B22E687B8007E62A2 /* URLSessionMock.swift in Sources */,
 				E2CF274522E6A67D007E62A2 /* UpcomingMoviesViewControllerMock.swift in Sources */,
 				E2CF274122E6A5DD007E62A2 /* UpcomingMoviesGatewayMock.swift in Sources */,
 			);
