@@ -24,7 +24,6 @@
 		E2E7771622E386BD00161220 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7771522E386BD00161220 /* AppDelegate.swift */; };
 		E2E7771D22E386BF00161220 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2E7771C22E386BF00161220 /* Assets.xcassets */; };
 		E2E7772022E386BF00161220 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2E7771E22E386BF00161220 /* LaunchScreen.storyboard */; };
-		E2E7773622E386BF00161220 /* MovieDataBaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7773522E386BF00161220 /* MovieDataBaseUITests.swift */; };
 		E2E7774822E3896900161220 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7774722E3896900161220 /* Result.swift */; };
 		E2E7774B22E392AB00161220 /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7774A22E392AB00161220 /* ClientError.swift */; };
 		E2E7774D22E392E200161220 /* ClientSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7774C22E392E200161220 /* ClientSetup.swift */; };
@@ -61,13 +60,6 @@
 			remoteGlobalIDString = E2E7771122E386BD00161220;
 			remoteInfo = MovieDataBase;
 		};
-		E2E7773222E386BF00161220 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E2E7770A22E386BD00161220 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E2E7771122E386BD00161220;
-			remoteInfo = MovieDataBase;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -91,9 +83,6 @@
 		E2E7772122E386BF00161220 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2E7772622E386BF00161220 /* MovieDataBaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieDataBaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2E7772C22E386BF00161220 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E2E7773122E386BF00161220 /* MovieDataBaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieDataBaseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E2E7773522E386BF00161220 /* MovieDataBaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataBaseUITests.swift; sourceTree = "<group>"; };
-		E2E7773722E386BF00161220 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2E7774722E3896900161220 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		E2E7774A22E392AB00161220 /* ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
 		E2E7774C22E392E200161220 /* ClientSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientSetup.swift; sourceTree = "<group>"; };
@@ -131,13 +120,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E2E7772322E386BF00161220 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E2E7772E22E386BF00161220 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -240,7 +222,6 @@
 			children = (
 				E2E7771422E386BD00161220 /* MovieDataBase */,
 				E2E7772922E386BF00161220 /* MovieDataBaseTests */,
-				E2E7773422E386BF00161220 /* MovieDataBaseUITests */,
 				E2E7771322E386BD00161220 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -250,7 +231,6 @@
 			children = (
 				E2E7771222E386BD00161220 /* MovieDataBase.app */,
 				E2E7772622E386BF00161220 /* MovieDataBaseTests.xctest */,
-				E2E7773122E386BF00161220 /* MovieDataBaseUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -277,15 +257,6 @@
 				E2E7775222E395DA00161220 /* Network */,
 			);
 			path = MovieDataBaseTests;
-			sourceTree = "<group>";
-		};
-		E2E7773422E386BF00161220 /* MovieDataBaseUITests */ = {
-			isa = PBXGroup;
-			children = (
-				E2E7773522E386BF00161220 /* MovieDataBaseUITests.swift */,
-				E2E7773722E386BF00161220 /* Info.plist */,
-			);
-			path = MovieDataBaseUITests;
 			sourceTree = "<group>";
 		};
 		E2E7774322E388E800161220 /* SupportingFiles */ = {
@@ -520,24 +491,6 @@
 			productReference = E2E7772622E386BF00161220 /* MovieDataBaseTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		E2E7773022E386BF00161220 /* MovieDataBaseUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E2E7774022E386BF00161220 /* Build configuration list for PBXNativeTarget "MovieDataBaseUITests" */;
-			buildPhases = (
-				E2E7772D22E386BF00161220 /* Sources */,
-				E2E7772E22E386BF00161220 /* Frameworks */,
-				E2E7772F22E386BF00161220 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E2E7773322E386BF00161220 /* PBXTargetDependency */,
-			);
-			name = MovieDataBaseUITests;
-			productName = MovieDataBaseUITests;
-			productReference = E2E7773122E386BF00161220 /* MovieDataBaseUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -554,10 +507,6 @@
 					E2E7772522E386BF00161220 = {
 						CreatedOnToolsVersion = 10.2.1;
 						LastSwiftMigration = 1020;
-						TestTargetID = E2E7771122E386BD00161220;
-					};
-					E2E7773022E386BF00161220 = {
-						CreatedOnToolsVersion = 10.2.1;
 						TestTargetID = E2E7771122E386BD00161220;
 					};
 				};
@@ -577,7 +526,6 @@
 			targets = (
 				E2E7771122E386BD00161220 /* MovieDataBase */,
 				E2E7772522E386BF00161220 /* MovieDataBaseTests */,
-				E2E7773022E386BF00161220 /* MovieDataBaseUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -602,13 +550,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E23C051E22E6BFA40054FEC7 /* upcoming.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E2E7772F22E386BF00161220 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,14 +605,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E2E7772D22E386BF00161220 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E2E7773622E386BF00161220 /* MovieDataBaseUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -679,11 +612,6 @@
 			isa = PBXTargetDependency;
 			target = E2E7771122E386BD00161220 /* MovieDataBase */;
 			targetProxy = E2E7772722E386BF00161220 /* PBXContainerItemProxy */;
-		};
-		E2E7773322E386BF00161220 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E2E7771122E386BD00161220 /* MovieDataBase */;
-			targetProxy = E2E7773222E386BF00161220 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -892,44 +820,6 @@
 			};
 			name = Release;
 		};
-		E2E7774122E386BF00161220 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = MovieDataBaseUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.raduj.MovieDataBaseUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MovieDataBase;
-			};
-			name = Debug;
-		};
-		E2E7774222E386BF00161220 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = MovieDataBaseUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.raduj.MovieDataBaseUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MovieDataBase;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -956,15 +846,6 @@
 			buildConfigurations = (
 				E2E7773E22E386BF00161220 /* Debug */,
 				E2E7773F22E386BF00161220 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E2E7774022E386BF00161220 /* Build configuration list for PBXNativeTarget "MovieDataBaseUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E2E7774122E386BF00161220 /* Debug */,
-				E2E7774222E386BF00161220 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
