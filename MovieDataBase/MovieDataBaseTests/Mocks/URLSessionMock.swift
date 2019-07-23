@@ -32,7 +32,7 @@ enum MockClientSetup: ClientSetup {
     }
 }
 
-class MockURLSession: URLSessionProtocol {
+class URLSessionMock: URLSessionProtocol {
     var nextDataTask = MockDataTask()
     var statusCode: Int = 200
     var nextData: Data?

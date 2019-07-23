@@ -7,27 +7,38 @@
 //
 
 import XCTest
+@testable import MovieDataBase
 
 class UpcomingMoviesGatewaySetupTests: XCTestCase {
+    var sut: UpcomingMoviesGatewaySetup!
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    override func setUp() { }
+
+    func test_UpcomingMoviesGatewaySetup_whenCaseUpcoming() {
+        let expectedEndpoint = "https://api.themoviedb.org/3/" +
+        "movie/upcoming?api_key=1f54bd990f1cdfb230adb312546d765d&page=10&language=en-US"
+
+        sut = .upcoming(page: 10)
+
+        XCTAssertEqual(sut.endpoint, expectedEndpoint)
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func test_UpcomingMoviesGatewaySetup_whenCaseGenre() {
+        let expectedEndpoint = "https://api.themoviedb.org/3/" +
+        "genre/movie/list?api_key=1f54bd990f1cdfb230adb312546d765d&language=en-US"
+
+        sut = .genre
+
+        XCTAssertEqual(sut.endpoint, expectedEndpoint)
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+    func test_UpcomingMoviesGatewaySetup_whenCaseSearchMovie() {
+        let expectedEndpoint = "https://api.themoviedb.org/3/" +
+            "search/movie?query=Terminator&language=en-US&" +
+        "api_key=1f54bd990f1cdfb230adb312546d765d&page=1&include_adult=false"
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+        sut = .search(movie: "Terminator", page: 1)
 
+        XCTAssertEqual(sut.endpoint, expectedEndpoint)
+    }
 }

@@ -11,10 +11,10 @@ import XCTest
 
 class HttpClientTests: XCTestCase {
     var sut: HttpClient!
-    var sessionMock: MockURLSession!
+    var sessionMock: URLSessionMock!
 
     override func setUp() {
-        sessionMock = MockURLSession()
+        sessionMock = URLSessionMock()
         sut = HttpClient(urlSession: sessionMock)
     }
 
