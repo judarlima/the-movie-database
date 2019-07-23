@@ -57,16 +57,12 @@ class HttpClient: ClientProtocol {
             } catch {
                 return .failure(.couldNotParseObject)
             }
-
         case 403:
             return .failure(.authenticationRequired)
-
         case 404:
             return .failure(.couldNotFindHost)
-
         case 500:
             return .failure(.badRequest)
-
         default:
             return .failure(.unknown("Unexpected Error."))
         }

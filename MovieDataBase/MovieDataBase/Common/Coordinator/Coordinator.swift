@@ -39,3 +39,4 @@ class Coordinator: UpcomingCoordinatorProtocol {
         navigationController.pushViewController(viewController, animated: true)
     }
 }
+

@@ -1,0 +1,27 @@
+{
+    "results": [
+        {
+            "vote_count": 0,
+            "id": 617091,
+            "video": false,
+            "vote_average": 0,
+            "title": "Ralfs Farben",
+            "popularity": 2.461,
+            "poster_path": null,
+            "original_language": "de",
+            "original_title": "Ralfs Farben",
+            "genre_ids": [],
+            "backdrop_path": null,
+            "adult": false,
+            "overview": "",
+            "release_date": "2019-08-08"
+        }
+    ],
+    "page": 12,
+    "total_results": 391,
+    "dates": {
+        "maximum": "2019-08-16",
+        "minimum": "2019-07-22"
+    },
+    "total_pages": 20
+}

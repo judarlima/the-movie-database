@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 struct Upcoming {
-    
     struct Movie {
         let id: Int
         let title: String
@@ -21,7 +20,6 @@ struct Upcoming {
         let releaseDate: String
         let overview: String
     }
-
     let movies: [Movie]
     let totalPages: Int
 }

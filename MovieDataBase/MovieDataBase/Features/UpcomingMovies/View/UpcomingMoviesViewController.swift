@@ -66,7 +66,7 @@ extension UpcomingMoviesViewController: UpcomingMoviesDisplayProtocol {
     }
 
     func tryAgain() {
-        print("aqui")
+        interactor.tryAgain()
     }
 
     func displayEndList() {
@@ -103,7 +103,6 @@ extension UpcomingMoviesViewController: UITableViewDataSource {
             else { return UITableViewCell() }
         let viewModel = movies[indexPath.row]
         cell.bind(viewModel: viewModel)
-
         return cell
     }
 
@@ -128,6 +127,7 @@ extension UpcomingMoviesViewController: UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.resignFirstResponder()
+        self.loadingView.show()
         guard let textToSearch = searchBar.text else { return }
         let trimmedString = textToSearch.trimmingCharacters(in: .whitespacesAndNewlines)
         interactor.searchMovies(query: trimmedString)

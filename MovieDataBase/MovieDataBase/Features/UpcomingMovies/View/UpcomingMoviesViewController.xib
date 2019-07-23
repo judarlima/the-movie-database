@@ -64,7 +64,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QbT-no-Oou" customClass="LoadingView" customModule="MovieDataBase" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="220" width="414" height="642"/>
                     <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
             </subviews>
@@ -75,10 +75,10 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="QbT-no-Oou" secondAttribute="bottom" id="7wZ-j2-9yo"/>
                 <constraint firstItem="Tkc-0Y-AIE" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="MFp-Tr-u47"/>
                 <constraint firstItem="QbT-no-Oou" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="R8g-Wc-GPe"/>
+                <constraint firstItem="QbT-no-Oou" firstAttribute="top" secondItem="Tkc-0Y-AIE" secondAttribute="bottom" id="XeP-7F-e7E"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Tkc-0Y-AIE" secondAttribute="trailing" id="c0t-v3-fas"/>
                 <constraint firstAttribute="bottom" secondItem="FkV-2m-TKD" secondAttribute="bottom" id="i18-CG-pY5"/>
                 <constraint firstItem="FkV-2m-TKD" firstAttribute="top" secondItem="Tkc-0Y-AIE" secondAttribute="bottom" id="nsf-v7-SGG"/>
-                <constraint firstItem="QbT-no-Oou" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="qwx-DX-3Ub"/>
                 <constraint firstItem="Tkc-0Y-AIE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="tUa-Jg-8kc"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QbT-no-Oou" secondAttribute="trailing" id="zD6-48-IBf"/>
             </constraints>
