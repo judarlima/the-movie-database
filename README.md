@@ -16,7 +16,7 @@
 <a name="architecture"></a>
 ## Architecture
 - This project architecture is a variation of VIP, respecting SOLID and Clean Architecture principles.
-- About the ViewModel, she doesn't contains business logic, her responsibility is only abstract the business model data into a struct that only makes sense to the presentation layer, trying not to expose those businesses model information at viewController.
+- About the ViewModel, it doesn't contains business logic, its responsibility is only abstract the business model data into a struct that only makes sense to the presentation layer, trying not to expose those businesses model information at viewController.
 - The layers into this architecture respect a unidirectional flow `(View Controller -> Interactor -> Presenter -> View Controller)`, this helps to prevents mistakes and issues like `reference cycles`.
 <br><br>
 
