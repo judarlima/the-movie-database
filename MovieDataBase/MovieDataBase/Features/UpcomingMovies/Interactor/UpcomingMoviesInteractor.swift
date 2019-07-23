@@ -42,15 +42,16 @@ class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
 
     func listUpcomingMovies() {
         self.lastUseCase = .listUpcomingMovies
-        self.gateway.fetchUpcomingMovies(page: self.currentPage) { (result) in
+        self.gateway.fetchUpcomingMovies(page: self.currentPage) { [weak self] (result) in
+            guard let interactor = self else { return }
             switch result {
             case let .success(upcoming):
-                self.isSearching = false
-                self.totalPages = upcoming.totalPages
-                self.cache = upcoming.movies
-                self.presenter.presentMovies(movies: upcoming.movies)
+                interactor.isSearching = false
+                interactor.totalPages = upcoming.totalPages
+                interactor.cache = upcoming.movies
+                interactor.presenter.presentMovies(movies: upcoming.movies)
             case let .failure(error):
-                self.presenter.presentError(error: error.localizedDescription)
+                interactor.presenter.presentError(error: error.localizedDescription)
             }
         }
     }
@@ -59,16 +60,17 @@ class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
         guard query != "" else { self.listUpcomingMovies(); return }
         self.searchQuery = query
         self.lastUseCase = .searchMovies
-        self.gateway.fetchFiltered(page: 1, query: query) { (result) in
+        self.gateway.fetchFiltered(page: 1, query: query) { [weak self] (result) in
+            guard let interactor = self else { return }
             switch result {
             case let .success(filteredMovies):
-                self.isSearching = true
-                self.cache.removeAll()
-                self.cache = filteredMovies.movies
-                self.totalPages = filteredMovies.totalPages
-                self.presenter.presentMovies(movies: filteredMovies.movies)
+                interactor.isSearching = true
+                interactor.cache.removeAll()
+                interactor.cache = filteredMovies.movies
+                interactor.totalPages = filteredMovies.totalPages
+                interactor.presenter.presentMovies(movies: filteredMovies.movies)
             case let .failure(error):
-                self.presenter.presentError(error: error.localizedDescription)
+                interactor.presenter.presentError(error: error.localizedDescription)
             }
         }
     }
@@ -88,25 +90,27 @@ class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
     }
 
     private func nextFilteredPage() {
-        self.gateway.fetchFiltered(page: self.currentPage, query: self.searchQuery) { (result) in
+        self.gateway.fetchFiltered(page: self.currentPage, query: self.searchQuery) { [weak self] (result) in
+            guard let interactor = self else { return }
             switch result {
             case let .success(filteredMovies):
-                self.cache.append(contentsOf: filteredMovies.movies)
-                self.presenter.presentMovies(movies: filteredMovies.movies)
+                interactor.cache.append(contentsOf: filteredMovies.movies)
+                interactor.presenter.presentMovies(movies: filteredMovies.movies)
             case let .failure(error):
-                self.presenter.presentError(error: error.localizedDescription)
+                interactor.presenter.presentError(error: error.localizedDescription)
             }
         }
     }
 
     private func nextUpcoming() {
-        self.gateway.fetchUpcomingMovies(page: self.currentPage) { (result) in
+        self.gateway.fetchUpcomingMovies(page: self.currentPage) { [weak self] (result) in
+            guard let interactor = self else { return }
             switch result {
             case let .success(upcoming):
-                self.cache.append(contentsOf: upcoming.movies)
-                self.presenter.presentMovies(movies: self.cache)
+                interactor.cache.append(contentsOf: upcoming.movies)
+                interactor.presenter.presentMovies(movies: interactor.cache)
             case let .failure(error):
-                self.presenter.presentError(error: error.localizedDescription)
+                interactor.presenter.presentError(error: error.localizedDescription)
             }
         }
     }

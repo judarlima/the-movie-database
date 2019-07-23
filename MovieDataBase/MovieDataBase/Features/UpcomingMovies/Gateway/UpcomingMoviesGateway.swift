@@ -31,11 +31,12 @@ class UpcomingMoviesGateway: UpcomingMoviesGatewayProtocol {
 
     func fetchUpcomingMovies(page: Int, completion: @escaping (Result<Upcoming>) -> Void) {
         if self.genres.isEmpty { fetchGenres() }
-        queue.addOperation {
-            self.client.requestData(with: UpcomingMoviesGatewaySetup.upcoming(page: page)) { (result: Result<UpcomingResponseModel>) in
+        queue.addOperation { [weak self] in
+            guard let gateway = self else { return }
+            gateway.client.requestData(with: UpcomingMoviesGatewaySetup.upcoming(page: page)) { (result: Result<UpcomingResponseModel>) in
                 switch result {
                 case let .success(upcomingResponse):
-                    let upcoming = self.adapter.transform(from: upcomingResponse, genres: self.genres)
+                    let upcoming = gateway.adapter.transform(from: upcomingResponse, genres: gateway.genres)
                     completion(.success(upcoming))
                 case let .failure(error):
                     completion(.failure(error))
@@ -45,11 +46,12 @@ class UpcomingMoviesGateway: UpcomingMoviesGatewayProtocol {
     }
 
     private func fetchGenres() {
-        queue.addOperation {
-            self.client.requestData(with: UpcomingMoviesGatewaySetup.genre) { (result: Result<GenresResponseModel>) in
+        queue.addOperation { [weak self] in
+            guard let gateway = self else { return }
+            gateway.client.requestData(with: UpcomingMoviesGatewaySetup.genre) { (result: Result<GenresResponseModel>) in
                 if case let .success(genreResponse) = result {
-                    let movieGenres = self.adapter.transform(from: genreResponse)
-                    movieGenres.genres.forEach { self.genres[$0.id] = $0.name }
+                    let movieGenres = gateway.adapter.transform(from: genreResponse)
+                    movieGenres.genres.forEach { gateway.genres[$0.id] = $0.name }
                 }
             }
         }
@@ -57,12 +59,13 @@ class UpcomingMoviesGateway: UpcomingMoviesGatewayProtocol {
 
     func fetchFiltered(page: Int, query: String, completion: @escaping (Result<Upcoming>) -> Void) {
         if self.genres.isEmpty { fetchGenres() }
-        queue.addOperation {
-            self.client.requestData(with: UpcomingMoviesGatewaySetup.search(movie: query, page: page)) {
+        queue.addOperation { [weak self] in
+            guard let gateway = self else { return }
+            gateway.client.requestData(with: UpcomingMoviesGatewaySetup.search(movie: query, page: page)) {
                 (result: Result<UpcomingResponseModel>) in
                 switch result {
                 case let .success(filteredMoviesResponse):
-                    let filteredMovies = self.adapter.transform(from: filteredMoviesResponse, genres: self.genres)
+                    let filteredMovies = gateway.adapter.transform(from: filteredMoviesResponse, genres: gateway.genres)
                     completion(.success(filteredMovies))
                 case let .failure(error):
                     completion(.failure(error))

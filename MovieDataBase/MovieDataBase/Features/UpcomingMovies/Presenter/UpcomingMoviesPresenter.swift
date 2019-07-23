@@ -34,8 +34,8 @@ class UpcomingMoviesPresenter: UpcomingMoviesPresenterProtocol {
                 overview: movie.overview,
                 releaseDate: "Release Date: \(movie.releaseDate)")
         }
-        DispatchQueue.main.async {
-            self.viewController?.displayMovies(viewModels: moviesViewModel)
+        DispatchQueue.main.async { [weak self] in
+            self?.viewController?.displayMovies(viewModels: moviesViewModel)
         }
     }
 
@@ -47,8 +47,8 @@ class UpcomingMoviesPresenter: UpcomingMoviesPresenterProtocol {
                                        genre: movie.genres,
                                        overview: movie.overview,
                                        releaseDate: movie.releaseDate)
-        DispatchQueue.main.async {
-            self.viewController?.showDetails(viewModel: viewModel)
+        DispatchQueue.main.async { [weak self] in
+            self?.viewController?.showDetails(viewModel: viewModel)
         }
     }
 
@@ -60,14 +60,14 @@ class UpcomingMoviesPresenter: UpcomingMoviesPresenterProtocol {
         }
         alertView.addAction(action)
         let errorViewModel = ErrorViewModel(alert: alertView)
-        DispatchQueue.main.async {
-            self.viewController?.showError(viewModel: errorViewModel)
+        DispatchQueue.main.async { [weak self] in
+            self?.viewController?.showError(viewModel: errorViewModel)
         }
     }
 
     func presentEndList() {
-        DispatchQueue.main.async {
-            self.viewController?.displayEndList()
+        DispatchQueue.main.async { [weak self] in
+            self?.viewController?.displayEndList()
         }
     }
 }
