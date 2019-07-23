@@ -10,18 +10,16 @@ import Foundation
 import UIKit
 
 struct Upcoming {
-    
     struct Movie {
         let id: Int
         let title: String
         let originalTitle: String
         let poster: String
         let backdrop: String
-        let genreIDS: [Int]
+        let genres: String
         let releaseDate: String
         let overview: String
     }
-
     let movies: [Movie]
     let totalPages: Int
 }
