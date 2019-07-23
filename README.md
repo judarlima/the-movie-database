@@ -1,6 +1,6 @@
 # The Movie Database
 
-[![Build Status](https://app.bitrise.io/app/a9088d3bd74f31ba/status.svg?token=FMiJAiDNckJfe7WG45m0wQ)](https://app.bitrise.io/app/a9088d3bd74f31ba) [![codebeat badge](https://codebeat.co/badges/6e6878d6-ebff-435c-a727-2502047f1dcf)](https://codebeat.co/projects/github-com-judarlima-themoviesdb-development)
+[![Build Status](https://app.bitrise.io/app/55701b6e7a2e5d0a/status.svg?token=N3IpJVizZ9Tkn2F09Rukhg)](https://app.bitrise.io/app/55701b6e7a2e5d0a) [![codebeat badge](https://codebeat.co/badges/772425b5-88d0-4323-b056-e8d01325deae)](https://codebeat.co/projects/github-com-judarlima-the-movie-database-development)
 
 
 1. [ Architecture ](#architecture)
