@@ -73,7 +73,7 @@ $ open MovieDataBase.xcodeproj
 <a name="preview"></a>
 ## Preview
 ### Movies List
-<img width="300" src="screenshots/movies-list.png">
+<img width="300" src="screenshots/iPhoneX/Portrait/movies-list.png">
 
 ### Movie Detail
-<img width="300" src="screenshots/movie-details.png">
+<img width="300" src="screenshots/iPhoneX/Portrait/movie-details.png">
