@@ -27,7 +27,8 @@ class CoordinatorTests: XCTestCase {
 
     func test_movieDetails_thenNavigationPushMovieViewController() {
         let viewModel = MovieViewModel(id: 133, title: "title", poster: "",
-                                       backdrop: "", genre: "", overview: "", releaseDate: "")
+                                       backdrop: "", genre: "", overview: "",
+                                       releaseDate: "", accessibilityLabel: "")
 
         sut.movieDetails(viewModel: viewModel)
 

@@ -16,4 +16,5 @@ struct MovieViewModel {
     let genre: String
     let overview: String
     let releaseDate: String
+    let accessibilityLabel: String
 }

@@ -204,7 +204,8 @@ class UpcomingMoviesInteractorTests: XCTestCase {
                               backdrop: "",
                               genre: "",
                               overview: "",
-                              releaseDate: "")
+                              releaseDate: "",
+                              accessibilityLabel: "")
     }
 }
 

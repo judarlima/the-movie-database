@@ -30,15 +30,26 @@ class MovieViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        bindViewModel()
     }
 
     private func setup() {
         self.title = "Movie Details"
-        self.posterImageView.loadImage(url: viewModel.poster)
+        view.isAccessibilityElement = true
+        self.movieTitle.isAccessibilityElement = false
+        self.releaseDate.isAccessibilityElement = false
+        self.genre.isAccessibilityElement = false
+        self.overview.isAccessibilityElement = false
+        self.backdropImageView.isAccessibilityElement = false
+    }
+
+    private func bindViewModel() {
         self.movieTitle.text = viewModel.title
         self.releaseDate.text = viewModel.releaseDate
         self.genre.text = viewModel.genre
         self.overview.text = viewModel.overview
+        self.posterImageView.loadImage(url: viewModel.poster)
         self.backdropImageView.loadImage(url: viewModel.backdrop)
+        self.view.accessibilityLabel = viewModel.accessibilityLabel
     }
 }

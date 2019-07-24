@@ -25,18 +25,32 @@ class UpcomingMoviesPresenterImpl: UpcomingMoviesPresenter {
 
     func presentMovies(movies: [Upcoming.Movie]) {
         let moviesViewModel = movies.map { movie -> MovieViewModel in
-
             return MovieViewModel(id: movie.id,
                                   title: movie.title,
                                   poster: movie.poster,
                                   backdrop: movie.backdrop,
                                   genre: "Genre: \(movie.genres)",
                 overview: movie.overview,
-                releaseDate: "Release Date: \(movie.releaseDate)")
+                releaseDate: "Release Date: \(movie.releaseDate)",
+                accessibilityLabel: shortAccessibilityString(movie: movie))
         }
         DispatchQueue.main.async { [weak self] in
             self?.viewController?.displayMovies(viewModels: moviesViewModel)
         }
+    }
+
+    private func shortAccessibilityString(movie: Upcoming.Movie) -> String {
+        let accessibilityString = movie.title + "Genre: \(movie.genres)" +
+        "Release Data: \(movie.releaseDate)"
+
+        return accessibilityString
+    }
+
+    private func detailedAccessibilityString(movie: Upcoming.Movie) -> String {
+        let accessibilityString = movie.title + "Overview: \(movie.overview)" +
+            "Genre: \(movie.genres)" + "Release Data: \(movie.releaseDate)"
+
+        return accessibilityString
     }
 
     func presentMovieDetails(movie: Upcoming.Movie) {
@@ -46,7 +60,8 @@ class UpcomingMoviesPresenterImpl: UpcomingMoviesPresenter {
                                        backdrop: movie.backdrop,
                                        genre: movie.genres,
                                        overview: movie.overview,
-                                       releaseDate: movie.releaseDate)
+                                       releaseDate: movie.releaseDate,
+                                       accessibilityLabel: detailedAccessibilityString(movie: movie))
         DispatchQueue.main.async { [weak self] in
             self?.viewController?.showDetails(viewModel: viewModel)
         }

@@ -29,6 +29,9 @@ class MovieTableViewCell: UITableViewCell {
     }
 
     private func setup() {
+        isAccessibilityElement = false
+        containerView.isAccessibilityElement = true
+        containerView.accessibilityTraits = .button
         containerView.layer.cornerRadius = 8.0
         containerView.clipsToBounds = true
     }
@@ -38,6 +41,7 @@ class MovieTableViewCell: UITableViewCell {
         self.genreLabel.text = viewModel.genre
         self.releaseLabel.text = viewModel.releaseDate
         self.movieImageView.loadImage(url: viewModel.poster)
+        containerView.accessibilityLabel = viewModel.accessibilityLabel
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
