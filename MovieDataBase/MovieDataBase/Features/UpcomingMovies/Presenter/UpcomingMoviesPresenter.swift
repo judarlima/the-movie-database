@@ -13,15 +13,15 @@ struct ErrorViewModel {
     let alert: UIAlertController
 }
 
-protocol UpcomingMoviesPresenterProtocol {
+protocol UpcomingMoviesPresenter {
     func presentEndList()
     func presentMovies(movies: [Upcoming.Movie])
     func presentMovieDetails(movie: Upcoming.Movie)
     func presentError(error: String)
 }
 
-class UpcomingMoviesPresenter: UpcomingMoviesPresenterProtocol {
-    weak var viewController: UpcomingMoviesDisplayProtocol?
+class UpcomingMoviesPresenterImpl: UpcomingMoviesPresenter {
+    weak var viewController: UpcomingMoviesDisplay?
 
     func presentMovies(movies: [Upcoming.Movie]) {
         let moviesViewModel = movies.map { movie -> MovieViewModel in

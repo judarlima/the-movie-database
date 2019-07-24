@@ -10,10 +10,10 @@ import XCTest
 @testable import MovieDataBase
 
 class UpcomingMoviesAdapterTests: XCTestCase {
-    var sut: UpcomingMoviesAdapter!
+    var sut: UpcomingMoviesAdapterImpl!
 
     override func setUp() {
-        self.sut = UpcomingMoviesAdapter()
+        self.sut = UpcomingMoviesAdapterImpl()
     }
 
     func test_transforFromGenresResponseModel_thenReturnsGenres() {

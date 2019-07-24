@@ -9,7 +9,7 @@
 import Foundation
 @testable import MovieDataBase
 
-class UpcomingMoviesViewControllerMock: UpcomingMoviesDisplayProtocol {
+class UpcomingMoviesViewControllerMock: UpcomingMoviesDisplay {
     var presentedMovies: [MovieViewModel] = []
     var presentedDetails: MovieViewModel?
     var errorWasPresented = false

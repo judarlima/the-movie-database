@@ -8,14 +8,14 @@
 
 import Foundation
 
-protocol UpcomingMoviesGatewayProtocol {
+protocol UpcomingMoviesGateway {
     func fetchUpcomingMovies(page: Int, completion: @escaping (Result<Upcoming>) -> Void)
     func fetchFiltered(page: Int, query: String, completion: @escaping (Result<Upcoming>) -> Void)
 }
 
-class UpcomingMoviesGateway: UpcomingMoviesGatewayProtocol {
+class UpcomingMoviesGatewayImpl: UpcomingMoviesGateway {
     private let client: ClientProtocol
-    private let adapter: UpcomingMoviesAdapterProtocol
+    private let adapter: UpcomingMoviesAdapter
     private var genres: [Int: String] = [:]
     private lazy var queue: OperationQueue = {
         let operation = OperationQueue()
@@ -24,7 +24,7 @@ class UpcomingMoviesGateway: UpcomingMoviesGatewayProtocol {
         return operation
     }()
 
-    init(client: ClientProtocol, adapter: UpcomingMoviesAdapterProtocol) {
+    init(client: ClientProtocol, adapter: UpcomingMoviesAdapter) {
         self.client = client
         self.adapter = adapter
     }

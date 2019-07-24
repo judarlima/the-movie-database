@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol UpcomingMoviesInteractorProtocol {
+protocol UpcomingMoviesInteractor {
     func listUpcomingMovies()
     func nextMoviesPage()
     func seeDetails(viewModel: MovieViewModel)
@@ -23,10 +23,10 @@ fileprivate enum UpcomingInteractorRetryHandler {
     case nextMoviesPage
 }
 
-class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
+class UpcomingMoviesInteractorImpl: UpcomingMoviesInteractor {
 
-    private let gateway: UpcomingMoviesGatewayProtocol
-    private let presenter: UpcomingMoviesPresenterProtocol
+    private let gateway: UpcomingMoviesGateway
+    private let presenter: UpcomingMoviesPresenter
 
     private var cache: [Upcoming.Movie] = []
     private var totalPages = 0
@@ -35,7 +35,7 @@ class UpcomingMoviesInteractor: UpcomingMoviesInteractorProtocol {
     private var searchQuery = ""
     private var lastUseCase: UpcomingInteractorRetryHandler?
 
-    init(gateway: UpcomingMoviesGatewayProtocol, presenter: UpcomingMoviesPresenterProtocol) {
+    init(gateway: UpcomingMoviesGateway, presenter: UpcomingMoviesPresenter) {
         self.gateway = gateway
         self.presenter = presenter
     }

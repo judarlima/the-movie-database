@@ -9,7 +9,7 @@
 import Foundation
 @testable import MovieDataBase
 
-class UpcomingMoviesGatewayMock: UpcomingMoviesGatewayProtocol {
+class UpcomingMoviesGatewayMock: UpcomingMoviesGateway {
     var error: ClientError?
 
     func fetchUpcomingMovies(page: Int, completion: @escaping (Result<Upcoming>) -> Void) {

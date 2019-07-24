@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-protocol UpcomingMoviesAdapterProtocol {
+protocol UpcomingMoviesAdapter {
     func transform(from responseModel: UpcomingResponseModel, genres: [Int: String]) -> Upcoming
     func transform(from responseModel: GenresResponseModel) -> MovieGenres
 }
 
-class UpcomingMoviesAdapter: UpcomingMoviesAdapterProtocol {
+class UpcomingMoviesAdapterImpl: UpcomingMoviesAdapter {
 
     func transform(from responseModel: UpcomingResponseModel, genres: [Int: String]) -> Upcoming {
         let movies = responseModel.movies.compactMap { movie -> Upcoming.Movie? in
@@ -48,7 +48,6 @@ class UpcomingMoviesAdapter: UpcomingMoviesAdapterProtocol {
                                   releaseDate: dateString,
                                   overview: movie.overview)
         }
-        
         return Upcoming(movies: movies, totalPages: responseModel.totalPages)
     }
 

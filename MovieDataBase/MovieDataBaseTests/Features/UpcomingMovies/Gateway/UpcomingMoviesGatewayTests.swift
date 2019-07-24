@@ -10,14 +10,14 @@ import XCTest
 @testable import MovieDataBase
 
 class UpcomingMoviesGatewayTests: XCTestCase {
-    var sut: UpcomingMoviesGateway!
+    var sut: UpcomingMoviesGatewayImpl!
     var clientMock: ClientMock!
-    var adapter: UpcomingMoviesAdapter!
+    var adapter: UpcomingMoviesAdapterImpl!
 
     override func setUp() {
         self.clientMock = ClientMock()
-        self.adapter = UpcomingMoviesAdapter()
-        self.sut = UpcomingMoviesGateway(client: clientMock, adapter: adapter)
+        self.adapter = UpcomingMoviesAdapterImpl()
+        self.sut = UpcomingMoviesGatewayImpl(client: clientMock, adapter: adapter)
     }
 
     func test_fetchUpcomingMovies_whenClientReturnsSucess() {

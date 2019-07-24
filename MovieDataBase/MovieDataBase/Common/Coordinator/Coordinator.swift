@@ -25,10 +25,10 @@ class Coordinator: UpcomingCoordinatorProtocol {
     }
 
     func start() {
-        let gateway = UpcomingMoviesGateway(client: HttpClient(),
-                                            adapter: UpcomingMoviesAdapter())
-        let presenter = UpcomingMoviesPresenter()
-        let interactor = UpcomingMoviesInteractor(gateway: gateway, presenter: presenter)
+        let gateway = UpcomingMoviesGatewayImpl(client: HttpClient(),
+                                            adapter: UpcomingMoviesAdapterImpl())
+        let presenter = UpcomingMoviesPresenterImpl()
+        let interactor = UpcomingMoviesInteractorImpl(gateway: gateway, presenter: presenter)
         let viewController = UpcomingMoviesViewController(interactor: interactor, coordinator: self)
         presenter.viewController = viewController
         navigationController.pushViewController(viewController, animated: false)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol UpcomingMoviesDisplayProtocol: AnyObject {
+protocol UpcomingMoviesDisplay: AnyObject {
     func displayMovies(viewModels: [MovieViewModel])
     func showDetails(viewModel: MovieViewModel)
     func showError(viewModel: ErrorViewModel)
@@ -26,11 +26,11 @@ class UpcomingMoviesViewController: UIViewController {
         let footerView = LoadingView(frame: frame)
         return footerView
     }()
-    private let interactor: UpcomingMoviesInteractorProtocol
+    private let interactor: UpcomingMoviesInteractor
     private let coordinator: UpcomingCoordinatorProtocol
     private var movies: [MovieViewModel] = []
 
-    init(interactor: UpcomingMoviesInteractorProtocol, coordinator: UpcomingCoordinatorProtocol) {
+    init(interactor: UpcomingMoviesInteractor, coordinator: UpcomingCoordinatorProtocol) {
         self.interactor = interactor
         self.coordinator = coordinator
         super.init(nibName: String(describing: UpcomingMoviesViewController.self),
@@ -58,7 +58,7 @@ class UpcomingMoviesViewController: UIViewController {
     }
 }
 
-extension UpcomingMoviesViewController: UpcomingMoviesDisplayProtocol {
+extension UpcomingMoviesViewController: UpcomingMoviesDisplay {
 
     func showError(viewModel: ErrorViewModel) {
         loadingView.hide()

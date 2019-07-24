@@ -10,11 +10,11 @@ import XCTest
 @testable import MovieDataBase
 
 class UpcomingMoviesPresenterTests: XCTestCase {
-    var sut: UpcomingMoviesPresenter!
+    var sut: UpcomingMoviesPresenterImpl!
     var viewControllerMock: UpcomingMoviesViewControllerMock!
 
     override func setUp() {
-        self.sut = UpcomingMoviesPresenter()
+        self.sut = UpcomingMoviesPresenterImpl()
         self.viewControllerMock = UpcomingMoviesViewControllerMock()
         sut.viewController = viewControllerMock
     }

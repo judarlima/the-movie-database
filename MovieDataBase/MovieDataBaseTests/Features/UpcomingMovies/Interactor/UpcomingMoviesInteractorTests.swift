@@ -10,7 +10,7 @@ import XCTest
 @testable import MovieDataBase
 
 class UpcomingMoviesInteractorTests: XCTestCase {
-    var sut: UpcomingMoviesInteractor!
+    var sut: UpcomingMoviesInteractorImpl!
     var gatewayMock: UpcomingMoviesGatewayMock!
     var presenterMock: UpcomingMoviesPresenterMock!
 
@@ -18,7 +18,7 @@ class UpcomingMoviesInteractorTests: XCTestCase {
         self.presenterMock = UpcomingMoviesPresenterMock()
         self.gatewayMock = UpcomingMoviesGatewayMock()
 
-        self.sut = UpcomingMoviesInteractor(gateway: gatewayMock,
+        self.sut = UpcomingMoviesInteractorImpl(gateway: gatewayMock,
                                             presenter: presenterMock)
     }
 

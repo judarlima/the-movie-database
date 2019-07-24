@@ -9,7 +9,7 @@
 import Foundation
 @testable import MovieDataBase
 
-class UpcomingMoviesPresenterMock: UpcomingMoviesPresenterProtocol {
+class UpcomingMoviesPresenterMock: UpcomingMoviesPresenter {
     var presentEndListWasCalled = false
     var presentedMovies: [Upcoming.Movie] = []
     var presentedMovieDetail: Upcoming.Movie?
