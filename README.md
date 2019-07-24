@@ -5,12 +5,13 @@
 
 1. [ Architecture ](#architecture)
 2. [ Features ](#features)
-3. [ Continuous Integration ](#ci)
-4. [ Static Code Analysis ](#staticCodeAnalysis)
-5. [ Code Coverage ](#codeCoverage)
-6. [ Requirements ](#requirements)
-7. [ Instructions ](#instructions)
-8. [ Preview ](#preview)
+3. [ Accessibility ](#accessibility)
+4. [ Continuous Integration ](#ci)
+5. [ Static Code Analysis ](#staticCodeAnalysis)
+6. [ Code Coverage ](#codeCoverage)
+7. [ Requirements ](#requirements)
+8. [ Instructions ](#instructions)
+9. [ Preview ](#preview)
 
 ![](https://i.imgur.com/i0OEWcV.png)
 <a name="architecture"></a>
@@ -34,6 +35,10 @@
   - Movie Genres
   - Movie Release Date
   - Movie Backdrop Image
+
+<a name="accessibility"></a>
+## Accessibility
+- This App provides voice over accessibility.
 
 <a name="ci"></a>
 ## Continuous Integration
