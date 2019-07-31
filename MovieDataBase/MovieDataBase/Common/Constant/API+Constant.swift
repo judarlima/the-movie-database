@@ -6,8 +6,6 @@
 //  Copyright © 2019 Judar Lima. All rights reserved.
 //
 
-import Foundation
-
 enum API {
 
     static let key = "1f54bd990f1cdfb230adb312546d765d"

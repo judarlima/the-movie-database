@@ -5,7 +5,6 @@
 //  Created by Judar Lima on 20/07/19.
 //  Copyright © 2019 Judar Lima. All rights reserved.
 //
-
 import Foundation
 
 protocol UpcomingMoviesGateway {
@@ -13,7 +12,7 @@ protocol UpcomingMoviesGateway {
     func fetchFiltered(page: Int, query: String, completion: @escaping (Result<Upcoming>) -> Void)
 }
 
-class UpcomingMoviesGatewayImpl: UpcomingMoviesGateway {
+final class UpcomingMoviesGatewayImpl: UpcomingMoviesGateway {
     private let client: ClientProtocol
     private let adapter: UpcomingMoviesAdapter
     private var genres: [Int: String] = [:]

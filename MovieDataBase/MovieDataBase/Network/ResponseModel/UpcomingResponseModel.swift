@@ -6,8 +6,6 @@
 //  Copyright © 2019 Judar Lima. All rights reserved.
 //
 
-import Foundation
-
 struct UpcomingResponseModel: Decodable {
 
     struct Movie: Decodable {

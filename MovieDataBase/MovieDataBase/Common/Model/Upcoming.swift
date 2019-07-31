@@ -6,9 +6,6 @@
 //  Copyright © 2019 Judar Lima. All rights reserved.
 //
 
-import Foundation
-import UIKit
-
 struct Upcoming {
     struct Movie {
         let id: Int

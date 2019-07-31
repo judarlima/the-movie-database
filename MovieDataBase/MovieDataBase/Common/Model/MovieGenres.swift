@@ -6,8 +6,6 @@
 //  Copyright © 2019 Judar Lima. All rights reserved.
 //
 
-import Foundation
-
 struct MovieGenres {
     struct Genre {
         let id: Int

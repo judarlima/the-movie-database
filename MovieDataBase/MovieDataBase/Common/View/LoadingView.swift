@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoadingView: UIView {
+final class LoadingView: UIView {
 
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var loader: UIActivityIndicatorView!

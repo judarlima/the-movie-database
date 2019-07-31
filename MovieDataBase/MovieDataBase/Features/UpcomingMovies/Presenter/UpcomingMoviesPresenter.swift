@@ -6,7 +6,7 @@
 //  Copyright © 2019 Judar Lima. All rights reserved.
 //
 
-import Foundation
+
 import UIKit
 
 struct ErrorViewModel {
@@ -20,7 +20,7 @@ protocol UpcomingMoviesPresenter {
     func presentError(error: String)
 }
 
-class UpcomingMoviesPresenterImpl: UpcomingMoviesPresenter {
+final class UpcomingMoviesPresenterImpl: UpcomingMoviesPresenter {
     weak var viewController: UpcomingMoviesDisplay?
 
     func presentMovies(movies: [Upcoming.Movie]) {

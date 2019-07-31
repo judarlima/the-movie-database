@@ -6,10 +6,9 @@
 //  Copyright © 2019 Judar Lima. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-class ImageCacher {
+final class ImageCacher {
     private let cache: NSCache<NSString, UIImage>
 
     private init() {

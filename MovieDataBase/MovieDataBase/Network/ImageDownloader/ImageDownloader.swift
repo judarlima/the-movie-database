@@ -5,7 +5,6 @@
 //  Created by Judar Lima on 20/07/19.
 //  Copyright © 2019 Judar Lima. All rights reserved.
 //
-
 import Foundation
 import UIKit
 
@@ -13,7 +12,7 @@ protocol ImageDownloaderProtocol {
     func loadImage(from url: URL, completion: @escaping ((UIImage?) -> Void))
 }
 
-class ImageDownloader: ImageDownloaderProtocol {
+final class ImageDownloader: ImageDownloaderProtocol {
     private let urlSession: URLSessionProtocol
     private let imageCache: ImageCacher
 

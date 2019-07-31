@@ -12,7 +12,7 @@ protocol ClientProtocol {
     func requestData<T: Decodable>(with setup: ClientSetup, completion: @escaping (Result<T>) -> Void)
 }
 
-class HttpClient: ClientProtocol {
+final class HttpClient: ClientProtocol {
     private let urlSession: URLSessionProtocol
 
     init(urlSession: URLSessionProtocol = URLSession.shared) {

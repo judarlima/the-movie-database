@@ -6,7 +6,6 @@
 //  Copyright © 2019 Judar Lima. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 protocol UpcomingMoviesAdapter {
@@ -14,7 +13,7 @@ protocol UpcomingMoviesAdapter {
     func transform(from responseModel: GenresResponseModel) -> MovieGenres
 }
 
-class UpcomingMoviesAdapterImpl: UpcomingMoviesAdapter {
+final class UpcomingMoviesAdapterImpl: UpcomingMoviesAdapter {
 
     func transform(from responseModel: UpcomingResponseModel, genres: [Int: String]) -> Upcoming {
         let movies = responseModel.movies.compactMap { movie -> Upcoming.Movie? in

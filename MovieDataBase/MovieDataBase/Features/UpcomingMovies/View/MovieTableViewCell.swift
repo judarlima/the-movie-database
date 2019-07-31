@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MovieTableViewCell: UITableViewCell {
+final class MovieTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var movieImageView: UIImageView!
@@ -48,5 +48,4 @@ class MovieTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         super.setSelected(false, animated: true)
     }
-    
 }

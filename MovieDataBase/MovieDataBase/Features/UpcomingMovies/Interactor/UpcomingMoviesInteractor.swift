@@ -6,8 +6,6 @@
 //  Copyright © 2019 Judar Lima. All rights reserved.
 //
 
-import Foundation
-
 protocol UpcomingMoviesInteractor {
     func listUpcomingMovies()
     func nextMoviesPage()
@@ -23,7 +21,7 @@ fileprivate enum UpcomingInteractorRetryHandler {
     case nextMoviesPage
 }
 
-class UpcomingMoviesInteractorImpl: UpcomingMoviesInteractor {
+final class UpcomingMoviesInteractorImpl: UpcomingMoviesInteractor {
 
     private let gateway: UpcomingMoviesGateway
     private let presenter: UpcomingMoviesPresenter

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MovieViewController: UIViewController {
+final class MovieViewController: UIViewController {
     @IBOutlet private weak var posterImageView: UIImageView!
     @IBOutlet private weak var movieTitle: UILabel!
     @IBOutlet private weak var releaseDate: UILabel!

@@ -16,7 +16,7 @@ protocol UpcomingMoviesDisplay: AnyObject {
     func displayEndList()
 }
 
-class UpcomingMoviesViewController: UIViewController {
+final class UpcomingMoviesViewController: UIViewController {
     private let cellIdentifier = String(describing: MovieTableViewCell.self)
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet weak var loadingView: LoadingView!

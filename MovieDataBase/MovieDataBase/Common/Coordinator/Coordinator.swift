@@ -14,7 +14,7 @@ protocol UpcomingCoordinatorProtocol {
     var navigationController: UINavigationController { get }
 }
 
-class Coordinator: UpcomingCoordinatorProtocol {
+final class Coordinator: UpcomingCoordinatorProtocol {
     let navigationController: UINavigationController
 
     init(navigationController: UINavigationController) {
