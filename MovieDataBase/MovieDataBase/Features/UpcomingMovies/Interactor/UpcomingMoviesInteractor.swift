@@ -76,14 +76,14 @@ class UpcomingMoviesInteractorImpl: UpcomingMoviesInteractor {
     }
 
     func nextMoviesPage() {
+        guard !isSearching else {
+            presenter.presentEndList()
+            return
+        }
         if currentPage < totalPages {
             self.lastUseCase = .nextMoviesPage
             currentPage += 1
-            if self.isSearching {
-                self.nextFilteredPage()
-            } else {
-                self.nextUpcoming()
-            }
+            self.nextUpcoming()
         } else {
             presenter.presentEndList()
         }
