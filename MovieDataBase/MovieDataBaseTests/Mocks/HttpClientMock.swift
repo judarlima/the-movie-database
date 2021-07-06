@@ -12,7 +12,7 @@ import XCTest
 class ClientMock: ClientProtocol {
     var isFailure = false
 
-    func requestData<T : Decodable>(with setup: ClientSetup, completion: @escaping (Result<T>) -> Void) {
+    func requestData<T : Decodable>(with setup: ClientSetup, completion: @escaping (Result<T, ClientError>) -> Void) {
         if isFailure {
             completion(.failure(ClientError.invalidHttpResponse))
             return
@@ -20,8 +20,10 @@ class ClientMock: ClientProtocol {
             completion(generateData())
         }
     }
+    
+    func cancel() { }
 
-    private func generateData<T: Decodable>() -> Result<T> {
+    private func generateData<T: Decodable>() -> Result<T, ClientError> {
         guard
             let filePath = Bundle.main.path(forResource: "upcoming", ofType: "json")
             else {

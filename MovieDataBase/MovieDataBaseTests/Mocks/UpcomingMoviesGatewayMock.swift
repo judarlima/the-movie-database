@@ -12,7 +12,7 @@ import Foundation
 class UpcomingMoviesGatewayMock: UpcomingMoviesGateway {
     var error: ClientError?
 
-    func fetchUpcomingMovies(page: Int, completion: @escaping (Result<Upcoming>) -> Void) {
+    func fetchUpcomingMovies(page: Int, completion: @escaping (Result<Upcoming, ClientError>) -> Void) {
         guard let clientError = error else {
             completion(.success(generateUpcoming()))
             return
@@ -20,7 +20,7 @@ class UpcomingMoviesGatewayMock: UpcomingMoviesGateway {
         completion(.failure(clientError))
     }
 
-    func fetchFiltered(page: Int, query: String, completion: @escaping (Result<Upcoming>) -> Void) {
+    func fetchFiltered(page: Int, query: String, completion: @escaping (Result<Upcoming, ClientError>) -> Void) {
         guard let clientError = error else {
             completion(.success(generateUpcoming()))
             return

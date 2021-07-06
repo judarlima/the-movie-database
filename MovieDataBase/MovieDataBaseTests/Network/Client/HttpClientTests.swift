@@ -23,7 +23,7 @@ class HttpClientTests: XCTestCase {
         let clientExpectation = expectation(description: #function)
         var resultError: ClientError?
 
-        sut.requestData(with: MockClientSetup.none) { (result: Result<MockEntity>) in
+        sut.requestData(with: MockClientSetup.none) { (result: Result<MockEntity, ClientError>) in
             if case let .failure(error) = result {
                 resultError = error
             } else {
@@ -42,7 +42,7 @@ class HttpClientTests: XCTestCase {
         var clientResult: ClientError?
 
         sessionMock.nextError = ClientError.unknown("_")
-        sut.requestData(with: MockClientSetup.some) { (result: Result<MockEntity>) in
+        sut.requestData(with: MockClientSetup.some) { (result: Result<MockEntity, ClientError>) in
             if case let .failure(error) = result {
                 clientResult = error
             } else {
@@ -62,7 +62,7 @@ class HttpClientTests: XCTestCase {
         var clientResult: ClientError?
 
         sessionMock.nextData = nil
-        sut.requestData(with: MockClientSetup.some) { (result: Result<MockEntity>) in
+        sut.requestData(with: MockClientSetup.some) { (result: Result<MockEntity, ClientError>) in
             if case let .failure(error) = result {
                 clientResult = error
             } else {
@@ -83,7 +83,7 @@ class HttpClientTests: XCTestCase {
         sessionMock.nextData = Data(base64Encoded: "someData")
         sessionMock.isInvalidResponse = true
 
-        sut.requestData(with: MockClientSetup.some) { (result: Result<MockEntity>) in
+        sut.requestData(with: MockClientSetup.some) { (result: Result<MockEntity, ClientError>) in
             if case let .failure(error) = result {
                 clientResult = error
             } else {
@@ -103,7 +103,7 @@ class HttpClientTests: XCTestCase {
         var clientResult: ClientError?
         sessionMock.nextData = Data(base64Encoded: "someData")
 
-        sut.requestData(with: MockClientSetup.some) { (result: Result<MockEntity>) in
+        sut.requestData(with: MockClientSetup.some) { (result: Result<MockEntity, ClientError>) in
             if case let .failure(error) = result {
                 clientResult = error
             } else {
@@ -125,7 +125,7 @@ class HttpClientTests: XCTestCase {
         sessionMock.nextData = Data(base64Encoded: "someData")
         sessionMock.statusCode = 403
 
-        sut.requestData(with: MockClientSetup.some) { (result: Result<MockEntity>) in
+        sut.requestData(with: MockClientSetup.some) { (result: Result<MockEntity, ClientError>) in
             if case let .failure(error) = result {
                 clientResult = error
             } else {
@@ -146,7 +146,7 @@ class HttpClientTests: XCTestCase {
         sessionMock.nextData = Data(base64Encoded: "someData")
         sessionMock.statusCode = 404
 
-        sut.requestData(with: MockClientSetup.some) { (result: Result<MockEntity>) in
+        sut.requestData(with: MockClientSetup.some) { (result: Result<MockEntity, ClientError>) in
             if case let .failure(error) = result {
                 clientResult = error
             } else {
@@ -167,7 +167,7 @@ class HttpClientTests: XCTestCase {
         sessionMock.nextData = Data(base64Encoded: "someData")
         sessionMock.statusCode = 500
 
-        sut.requestData(with: MockClientSetup.some) { (result: Result<MockEntity>) in
+        sut.requestData(with: MockClientSetup.some) { (result: Result<MockEntity, ClientError>) in
             if case let .failure(error) = result {
                 clientResult = error
             } else {
@@ -188,7 +188,7 @@ class HttpClientTests: XCTestCase {
         sessionMock.nextData = Data(base64Encoded: "someData")
         sessionMock.statusCode = -1004
 
-        sut.requestData(with: MockClientSetup.some) { (result: Result<MockEntity>) in
+        sut.requestData(with: MockClientSetup.some) { (result: Result<MockEntity, ClientError>) in
             if case let .failure(error) = result {
                 clientResult = error
             } else {

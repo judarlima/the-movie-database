@@ -16,6 +16,7 @@ struct MockEntity: Decodable {
 
 class MockDataTask: URLSessionDataTaskProtocol {
     func resume() { }
+    func cancel() { }
 }
 
 enum MockClientSetup: ClientSetup {
