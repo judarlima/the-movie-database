@@ -9,24 +9,23 @@
 import Foundation
 
 protocol ClientProtocol {
-    func requestData<T: Decodable>(with setup: ClientSetup, completion: @escaping (Result<T>) -> Void)
+    func requestData<T: Decodable>(with setup: ClientSetup, completion: @escaping (Result<T, ClientError>) -> Void)
 }
 
-class HttpClient: ClientProtocol {
+final class APIClient: ClientProtocol {
     private let urlSession: URLSessionProtocol
 
     init(urlSession: URLSessionProtocol = URLSession.shared) {
         self.urlSession = urlSession
     }
 
-    func requestData<T: Decodable>(with setup: ClientSetup, completion: @escaping (Result<T>) -> Void) {
+    func requestData<T: Decodable>(with setup: ClientSetup, completion: @escaping (Result<T, ClientError>) -> Void) {
         guard let url = URL(string: setup.endpoint) else {
             completion(.failure(.urlNotFound))
             return
         }
-        DispatchQueue.main.async { [weak self] in
-            guard let client = self else { return }
-            client.urlSession.dataTask(with: url) { (data, response, error) in
+            self.urlSession.dataTask(with: url) { [weak self] (data, response, error) in
+                guard let self = self else { return }
                 if let error = error {
                     completion(.failure(.unknown(error.localizedDescription)))
                     return
@@ -41,13 +40,12 @@ class HttpClient: ClientProtocol {
                     completion(.failure(.invalidHttpResponse))
                     return
                 }
-                completion(client.convertResponse(httpResponse, data: data))
+                completion(self.convertResponse(httpResponse, data: data))
                 return
             }.resume()
-        }
     }
 
-    private func convertResponse<T: Decodable>(_ response: HTTPURLResponse, data: Data) -> Result<T> {
+    private func convertResponse<T: Decodable>(_ response: HTTPURLResponse, data: Data) -> Result<T, ClientError> {
         switch response.statusCode {
         case 200...299:
             do {

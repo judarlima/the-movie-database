@@ -10,12 +10,12 @@ import XCTest
 @testable import MovieDataBase
 
 class HttpClientTests: XCTestCase {
-    var sut: HttpClient!
+    var sut: APIClient!
     var sessionMock: URLSessionMock!
 
     override func setUp() {
         sessionMock = URLSessionMock()
-        sut = HttpClient(urlSession: sessionMock)
+        sut = APIClient(urlSession: sessionMock)
     }
 
     func test_requestData_whenReceiveInvalidURL_thenReturnUrlNotFound() {

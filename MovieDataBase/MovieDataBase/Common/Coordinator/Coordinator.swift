@@ -25,7 +25,7 @@ class Coordinator: UpcomingCoordinatorProtocol {
     }
 
     func start() {
-        let gateway = UpcomingMoviesGatewayImpl(client: HttpClient(),
+        let gateway = UpcomingMoviesGatewayImpl(client: APIClient(),
                                             adapter: UpcomingMoviesAdapterImpl())
         let presenter = UpcomingMoviesPresenterImpl()
         let interactor = UpcomingMoviesInteractorImpl(gateway: gateway, presenter: presenter)

@@ -11,13 +11,16 @@ import UIKit
 
 protocol ImageDownloaderProtocol {
     func loadImage(from url: URL, completion: @escaping ((UIImage?) -> Void))
+    func cancelDownload()
 }
 
 class ImageDownloader: ImageDownloaderProtocol {
     private let urlSession: URLSessionProtocol
     private let imageCache: ImageCacher
+    private var dataTask: URLSessionDataTaskProtocol?
 
-    init(urlSession: URLSessionProtocol = URLSession.shared, imageCache: ImageCacher = ImageCacher.shared) {
+    init(urlSession: URLSessionProtocol = URLSession.shared,
+         imageCache: ImageCacher = ImageCacher.shared) {
         self.urlSession = urlSession
         self.imageCache = imageCache
     }
@@ -28,7 +31,7 @@ class ImageDownloader: ImageDownloaderProtocol {
                 completion(cachedImage)
             }
         } else {
-            urlSession.dataTask(with: url) { [imageCache] (data, _, _) in
+            self.dataTask = urlSession.dataTask(with: url) { [imageCache] (data, _, _) in
                 guard
                     let data = data,
                     let image = UIImage(data: data)
@@ -36,8 +39,12 @@ class ImageDownloader: ImageDownloaderProtocol {
                 imageCache.cache(image: image, withKey: url.absoluteString as NSString)
                 DispatchQueue.main.async {
                     completion(image)
-                }
-                }.resume()
+                }}
+            self.dataTask?.resume()
         }
+    }
+    
+    func cancelDownload() {
+        self.dataTask?.cancel()
     }
 }
