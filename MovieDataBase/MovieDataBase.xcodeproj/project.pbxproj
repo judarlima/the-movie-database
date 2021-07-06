@@ -26,10 +26,9 @@
 		E2E7771622E386BD00161220 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7771522E386BD00161220 /* AppDelegate.swift */; };
 		E2E7771D22E386BF00161220 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2E7771C22E386BF00161220 /* Assets.xcassets */; };
 		E2E7772022E386BF00161220 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2E7771E22E386BF00161220 /* LaunchScreen.storyboard */; };
-		E2E7774822E3896900161220 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7774722E3896900161220 /* Result.swift */; };
 		E2E7774B22E392AB00161220 /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7774A22E392AB00161220 /* ClientError.swift */; };
 		E2E7774D22E392E200161220 /* ClientSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7774C22E392E200161220 /* ClientSetup.swift */; };
-		E2E7774F22E392FC00161220 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7774E22E392FC00161220 /* HttpClient.swift */; };
+		E2E7774F22E392FC00161220 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7774E22E392FC00161220 /* APIClient.swift */; };
 		E2E7775122E3957C00161220 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7775022E3957C00161220 /* ImageDownloader.swift */; };
 		E2E7775822E39CCE00161220 /* ImageCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7775722E39CCE00161220 /* ImageCacher.swift */; };
 		E2E7775C22E39ED500161220 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E7775B22E39ED500161220 /* URLSessionProtocol.swift */; };
@@ -87,10 +86,9 @@
 		E2E7772122E386BF00161220 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2E7772622E386BF00161220 /* MovieDataBaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieDataBaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2E7772C22E386BF00161220 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E2E7774722E3896900161220 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		E2E7774A22E392AB00161220 /* ClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
 		E2E7774C22E392E200161220 /* ClientSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientSetup.swift; sourceTree = "<group>"; };
-		E2E7774E22E392FC00161220 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		E2E7774E22E392FC00161220 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		E2E7775022E3957C00161220 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		E2E7775722E39CCE00161220 /* ImageCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacher.swift; sourceTree = "<group>"; };
 		E2E7775B22E39ED500161220 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
@@ -336,8 +334,7 @@
 			children = (
 				E2E7774A22E392AB00161220 /* ClientError.swift */,
 				E2E7774C22E392E200161220 /* ClientSetup.swift */,
-				E2E7774E22E392FC00161220 /* HttpClient.swift */,
-				E2E7774722E3896900161220 /* Result.swift */,
+				E2E7774E22E392FC00161220 /* APIClient.swift */,
 				E2E7775B22E39ED500161220 /* URLSessionProtocol.swift */,
 			);
 			path = Client;
@@ -579,7 +576,6 @@
 				E2E7778322E4005F00161220 /* MovieTableViewCell.swift in Sources */,
 				E2E7778722E41F3000161220 /* UpcomingMoviesPresenter.swift in Sources */,
 				E2E7774B22E392AB00161220 /* ClientError.swift in Sources */,
-				E2E7774822E3896900161220 /* Result.swift in Sources */,
 				E2E7776622E3B30800161220 /* UpcomingMoviesGateway.swift in Sources */,
 				E2E7776F22E3BF0500161220 /* UpcomingMoviesAdapter.swift in Sources */,
 				E2E917E322E4D0F300F4784E /* MovieGenres.swift in Sources */,
@@ -594,7 +590,7 @@
 				E2E7777322E3C35300161220 /* Upcoming.swift in Sources */,
 				E222B6E422E608E800B66D36 /* LoadingView.swift in Sources */,
 				E2E7775822E39CCE00161220 /* ImageCacher.swift in Sources */,
-				E2E7774F22E392FC00161220 /* HttpClient.swift in Sources */,
+				E2E7774F22E392FC00161220 /* APIClient.swift in Sources */,
 				E222B6E222E6079C00B66D36 /* MovieViewModel.swift in Sources */,
 				E2E7771622E386BD00161220 /* AppDelegate.swift in Sources */,
 				E2E7778A22E42FF500161220 /* UIImageView+ImageDownloader.swift in Sources */,
