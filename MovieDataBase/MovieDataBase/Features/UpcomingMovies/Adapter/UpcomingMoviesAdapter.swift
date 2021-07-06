@@ -31,22 +31,31 @@ class UpcomingMoviesAdapterImpl: UpcomingMoviesAdapter {
 
             let dateFormatterGet = DateFormatter()
             dateFormatterGet.dateFormat = "yyyy-MM-dd"
-            guard let date = dateFormatterGet.date(from: movie.releaseDate) else { return nil }
+            guard
+                let releaseDate = movie.releaseDate,
+                let date = dateFormatterGet.date(from: releaseDate) else { return nil }
 
             let dateFormatterPrint = DateFormatter()
             dateFormatterPrint.dateFormat = "d MMM, yyyy"
             let dateString = dateFormatterPrint.string(from: date)
 
-            let genresString = generateGenreString(genreIDS: movie.genreIDS, genres: genres)
+            guard
+                let genreIDS = movie.genreIDS,
+                let id = movie.id,
+                let originalTitle = movie.originalTitle,
+                let overview = movie.overview,
+                let title = movie.title
+            else { return nil }
+            let genresString = generateGenreString(genreIDS: genreIDS, genres: genres)
 
-            return Upcoming.Movie(id: movie.id,
-                                  title: movie.title,
-                                  originalTitle: movie.originalTitle,
+            return Upcoming.Movie(id: id,
+                                  title: title,
+                                  originalTitle: originalTitle,
                                   poster: poster,
                                   backdrop: backdrop,
                                   genres: genresString,
                                   releaseDate: dateString,
-                                  overview: movie.overview)
+                                  overview: overview)
         }
         return Upcoming(movies: movies, totalPages: responseModel.totalPages)
     }

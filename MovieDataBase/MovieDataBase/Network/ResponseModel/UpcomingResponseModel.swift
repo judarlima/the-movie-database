@@ -11,20 +11,20 @@ import Foundation
 struct UpcomingResponseModel: Decodable {
 
     struct Movie: Decodable {
-        let voteCount: Int
-        let id: Int
-        let video: Bool
-        let voteAverage: Double
-        let title: String
-        let popularity: Double
+        let voteCount: Int?
+        let id: Int?
+        let video: Bool?
+        let voteAverage: Double?
+        let title: String?
+        let popularity: Double?
         let posterPath: String?
-        let originalLanguage: String
-        let originalTitle: String
-        let genreIDS: [Int]
+        let originalLanguage: String?
+        let originalTitle: String?
+        let genreIDS: [Int]?
         let backdropPath: String?
-        let adult: Bool
-        let overview: String
-        let releaseDate: String
+        let adult: Bool?
+        let overview: String?
+        let releaseDate: String?
 
         enum CodingKeys: String, CodingKey {
             case voteCount = "vote_count"
